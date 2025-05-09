@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivo General | Patrimonio Documental Nacional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Utilidades */
+        .btn-primary {
+            display: inline-block;
+            background-color: #FF9A52; /* Naranja claro */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #FF8533; /* Naranja más oscuro para hover */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            background-color: #fff;
+            color: #FF9A52;
+            border: 2px solid #FF9A52;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #FFF1E6; /* Naranja muy claro */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Cabecera */
+        .header-top {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 19px 0;
+            color: #fff;
+        }
+        
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-contact {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-contact span {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-media {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-media a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-media a:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Cabecera Principal */
+        .main-header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: center; /* Centrado ahora que no hay barra de búsqueda */
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 70px;
+            width: auto; /* Asegura que la imagen mantenga su proporción */
+            object-fit: contain; /* Evita recortes */
+        }
+        
+        .logo-text h1 {
+            color: #FF9A52; /* Naranja claro */
+            font-size: 24px;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Navegación Principal - Ahora horizontal centrada */
+        .main-nav {
+            background-color: #fff;
+            border-bottom: 2px solid #FFD6B8; /* Borde naranja claro */
+            padding: 5px 0;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu li a {
+            display: block;
+            color: #333;
+            padding: 12px 18px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-menu li a:hover {
+            color: #FF9A52; /* Naranja claro */
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+        }
+        
+        /* Pie de página */
+        footer {
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+            color: #333;
+            padding-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+        
+        .footer-about img {
+            height: 60px;
+            width: auto; /* Asegura que la imagen mantenga su proporción */
+            object-fit: contain; /* Evita recortes */
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+            color: #FF8533; /* Naranja más oscuro */
+        }
+        
+        .footer-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .footer-bottom {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            
+            .book-collection {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .book-collection {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Estilos mejorados para la colección de libros */
+        .main-content {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .welcome {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #FFF9F5;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .welcome h2 {
+            color: #FF7F2A;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .welcome p {
+            font-size: 16px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            color: #FF7F2A;
+            font-size: 24px;
+            padding-bottom: 10px;
+            margin: 40px 0 20px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #FFB380;
+        }
+        
+        /* Nuevo diseño de colección de libros con grid - MODIFICADO A 3x2 */
+        .book-collection {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .book-item {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .book-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 20px rgba(255, 154, 82, 0.2);
+        }
+        
+        /* MODIFICADO: Ajustado para mostrar imágenes completas */
+        .book-cover {
+            height: auto; /* Cambiado de altura fija a automática */
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 3/2; /* Mantiene una proporción consistente */
+        }
+        
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Cambiado de 'cover' a 'contain' para mostrar la imagen completa */
+            transition: transform 0.5s ease;
+            background-color: #f9f9f9; /* Fondo para imágenes transparentes */
+        }
+        
+        .book-item:hover .book-cover img {
+            transform: scale(1.05);
+        }
+        
+        .book-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .book-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #FF7F2A;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .book-category {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+            background-color: #FFF1E6;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .book-button {
+            margin-top: auto;
+            text-align: center;
+        }
+        
+        .book-button a {
+            display: inline-block;
+            background-color: #FF9A52;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .book-button a:hover {
+            background-color: #FF8533;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabecera Superior -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <span>📞 (809) 123-4567</span>
+                    <span>✉️ AGN@archivodigital.gob</span>
+                </div>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/AGNRD"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2FAGN_RD"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/agn_rd"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/c/ArchivoGeneraldelaNaci%C3%B3nRepublicaDominicana"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cabecera Principal -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="agn.2.PNG" alt="Logo Archivo Digital">
+                    <div class="logo-text">
+                        <h1>ARCHIVO GENERAL</h1>
+                        <p>Patrimonio Documental Nacional</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navegación Principal -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Servicios.html">Servicios</a></li>
+                <li><a href="Noticias.html">Noticias</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+                <li><a href="Presentación.html">Presentación</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Contenido Principal -->
+    <div class="main-content">
+        <div class="welcome">
+            <h2>Bienvenidos a la Biblioteca Nacional Dominicana</h2>
+            <p>Descubre nuestra colección de libros, recursos digitales y patrimonio cultural dominicano.</p>
+        </div>
+        
+        <h3 class="section-title">Nuestra Colección</h3>
+        
+        <div class="book-collection">
+            <!-- Fila 1: 3 libros arriba -->
+            <!-- Libro 1 -->
+            <div class="book-item">
+                <div class="book-cover">
+                    <img src="libro1.PNG" alt="Historia Dominicana">
+                </div>
+                <div class="book-info">
+                    <div class="book-title">Historia Dominicana: Manuel de Jesus Galban</div>
+                    <div class="book-button">
+                        <a href="https://ministeriodeeducacion.gob.do/docs/biblioteca-virtual/ErPI-leyenda-historia-dominicana-manuel-de-jesus-galvanpdf.pdf">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Libro 2 -->
+            <div class="book-item">
+                <div class="book-cover">
+                    <img src="juan.PNG" alt="Literatura Caribeña">
+                </div>
+                <div class="book-info">
+                    <div class="book-title">Dos pesos de agua (1937)</div>
+                    <div class="book-button">
+                        <a href="juan.html">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Libro 3 -->
+            <div class="book-item">
+                <div class="book-cover">
+                    <img src="chivo.PNG" alt="Poesía Antillana">
+                </div>
+                <div class="book-info">
+                    <div class="book-title">La Fiesta del Chivo </div>
+                    <div class="book-button">
+                        <a href="libro el chivo.html">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Libro 4 -->
+            <div class="book-item">
+                <div class="book-cover">
+                    <img src="alma.PNG" alt="Economía del Caribe">
+                </div>
+                <div class="book-info">
+                    <div class="book-title">Alma Dominicana, Federico Garcia Godoy</div>
+                    <div class="book-button">
+                        <a href="https://agn.gob.do/phocadownload/libros/11-ColeccionJuvenilAlmaDominicana-web.pdf">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Libro 5 -->
+            <div class="book-item">
+                <div class="book-cover">
+                    <img src="canto.PNG" alt="Política Contemporánea">
+                </div>
+                <div class="book-info">
+                    <div class="book-title">Palabra, Canto y Testimonio, Fernando Casado</div>
+                    <div class="book-button">
+                        <a href="https://agn.gob.do/phocadownload/libros/318-Palabracantoytestimonio-web.pdf">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+            
+           
+              
+        </div>
+    </div>
+    
+    <!-- Pie de página -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <img src="agn.2.PNG" alt="Logo Archivo Digital">
+                    <p>El Archivo General es la institución responsable de la custodia, organización, preservación y difusión del patrimonio documental nacional, garantizando su acceso y contribuyendo a la salvaguarda de la memoria histórica del país.</p>
+                    <p>Horario de atención: Lunes a Viernes de 8:00 a.m. a 4:00 p.m.</p>
+                    <div class="footer-links">
+                        <a href="Términos De Uso.html">Términos De Uso</a>
+                        <span class="separator">|</span>
+                        <a href="Políticas De Privacidad.html">Políticas De Privacidad</a>
+                    </div>
+                </div>
+                <div class="footer-links-section">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="Servicios.html">Servicios</a></li>
+                        <li><a href="Noticias.html">Noticias</a></li>
+                        <li><a href="Contacto.html">Contacto</a></li>
+                        <li><a href="Presentación.html">Presentación</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-contact">
+                        <li>Calle Principal #123, Ciudad Capital</li>
+                        <li>Teléfono: (809) 123-4567</li>
+                        <li>Email: AGN@archivodigital.gob</li>
+                        <li>Horario: Lunes a Viernes, 8:00 AM - 4:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Archivo General. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

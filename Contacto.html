@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="estilos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivo General | Patrimonio Documental Nacional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Utilidades */
+        .btn-primary {
+            display: inline-block;
+            background-color: #FF9A52; /* Naranja claro */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #FF8533; /* Naranja más oscuro para hover */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            background-color: #fff;
+            color: #FF9A52;
+            border: 2px solid #FF9A52;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #FFF1E6; /* Naranja muy claro */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Cabecera */
+        .header-top {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 0px 0;
+            color: #fff;
+        }
+        
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-contact {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-contact span {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-media {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-media a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-media a:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Cabecera Principal */
+        .main-header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 10px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 70px;
+            width: auto;
+        }
+        
+        .logo-text {
+            text-align: left;
+        }
+        
+        .logo-text h1 {
+            color: #FF8533; /* Naranja más oscuro */
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        
+        .logo-text p {
+            color: #666;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        /* Navegación Principal */
+        .main-nav {
+            background-color: #fff;
+            border-bottom: 2px solid #FFD6B8; /* Borde naranja claro */
+            padding: 5px 0;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu li a {
+            display: block;
+            color: #333;
+            padding: 12px 18px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-menu li a:hover {
+            color: #FF9A52; /* Naranja claro */
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+        }
+        
+        /* Formulario de contacto */
+        .contacto-encabezado {
+            background-color: #FF9A52; /* Naranja claro */
+            color: #FFFFFF;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .contacto-encabezado h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        
+        .contacto-contenido {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .contacto-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contacto-info h2 {
+            color: #FF9A52; /* Naranja claro */
+            border-bottom: 2px solid #FF9A52;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .info-item {
+            margin-bottom: 20px;
+        }
+        
+        .info-item h3 {
+            margin-bottom: 5px;
+            color: #FF9A52; /* Naranja claro */
+        }
+        
+        .contacto-formulario {
+            flex: 2;
+            min-width: 300px;
+            background-color: #F5F5F5;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .contacto-formulario h2 {
+            color: #FF9A52; /* Naranja claro */
+            border-bottom: 2px solid #FF9A52;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            gap: 20px;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #DDDDDD;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .btn-enviar {
+            background-color: #FF9A52; /* Naranja claro */
+            color: #FFFFFF;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-enviar:hover {
+            background-color: #FF8533; /* Naranja más oscuro para hover */
+        }
+        
+        .mensaje-alerta {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .mensaje-exito {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .mensaje-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .errores {
+            color: #721c24;
+            background-color: #f8d7da;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        
+        /* Pie de página */
+        footer {
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+            color: #333;
+            padding-top: 60px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+        
+        .footer-about img {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+            color: #FF8533; /* Naranja más oscuro */
+        }
+        
+        .footer-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .footer-bottom {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .logo {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .logo-text {
+                text-align: center;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .form-group {
+                min-width: 100%;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Estilos para el Juego */
+        .game-container {
+            max-width: 1000px;
+            margin: 60px auto 0;
+            padding: 30px;
+            background-color: #FFF1E6;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border: 2px solid #FF9A52;
+        }
+
+        .game-title {
+            color: #7b3f00;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .game-subtitle {
+            color: #9c6644;
+            text-align: center;
+            margin-top: 0;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .game-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .scene {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .scene-overlay {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .question-container {
+            background-color: #f8f1e9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            border-left: 5px solid #9c6644;
+        }
+
+        .question {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #7b3f00;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .option {
+            padding: 12px 20px;
+            background-color: #d4a76a;
+            color: #472d20;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .option:hover {
+            background-color: #c69c6d;
+            transform: translateY(-2px);
+        }
+
+        .option.correct {
+            background-color: #5cb85c;
+            color: white;
+        }
+
+        .option.incorrect {
+            background-color: #d9534f;
+            color: white;
+        }
+
+        .score-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .explanation {
+            background-color: #f0e6d9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .feedback {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .next-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: #9c6644;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            display: none;
+        }
+
+        .next-btn:hover {
+            background-color: #7b3f00;
+        }
+
+        .final-score {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f1e9;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 2px solid #d4a76a;
+        }
+
+        .reset-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: #7b3f00;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            background-color: #5e2f00;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #e0d0c1;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #9c6644;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .game-instructions {
+            margin-top: 20px;
+            text-align: center;
+            color: #7b3f00;
+            font-style: italic;
+        }
+
+        @media (min-width: 768px) {
+            .options {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabecera Superior -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <span>📞 (809) 123-4567</span>
+                    <span>✉️ AGN@archivodigital.gob</span>
+                </div>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/AGNRD" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/AGN_RD" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/agn_rd" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/c/ArchivoGeneraldelaNacionRepublicaDominicana" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cabecera Principal -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="agn.2.PNG" alt="Logo Archivo General">
+                    <div class="logo-text">
+                        <h1>ARCHIVO GENERAL</h1>
+                        <p>Patrimonio Documental Nacional</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navegación Principal -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Servicios.html">Servicios</a></li>
+                <li><a href="Noticias.html">Noticias</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+                <li><a href="Presentación.html">Presentación</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Sección de Contacto -->
+    
+    <div class="container">
+        <div class="contacto-contenido">
+            <div class="contacto-info">
+                <h2>Información de Contacto</h2>
+                
+                <div class="info-item">
+                    <h3>Dirección</h3>
+                    <p>Calle Principal #123, Ciudad Capital</p>
+                </div>
+                
+                <div class="info-item">
+                    <h3>Teléfonos</h3>
+                    <p>(809) 123-4567</p>
+                </div>
+                
+                <div class="info-item">
+                    <h3>Correo Electrónico</h3>
+                    <p>AGN@archivodigital.gob</p>
+                </div>
+                
+                <div class="info-item">
+                    <h3>Horario de Atención</h3>
+                    <p>Lunes a Viernes: 8:00 AM - 4:00 PM</p>
+                </div>
+            </div>
+            
+            <div class="contacto-formulario">
+                <h2>Envíenos un Mensaje</h2>
+                
+                <div id="mensaje-confirmacion" class="mensaje-alerta mensaje-exito" style="display: none;">
+                    Su mensaje ha sido enviado correctamente. Nos pondremos en contacto con usted pronto.
+                </div>
+                
+                <div id="mensaje-error" class="mensaje-alerta mensaje-error" style="display: none;">
+                    Hubo un error al enviar su mensaje. Por favor, inténtelo de nuevo.
+                </div>
+                
+                <div id="errores" class="errores" style="display: none;">
+                    <ul id="lista-errores">
+                    </ul>
+                </div>
+                
+                <form action="https://formsubmit.co/wmau08@gmail.com" method="POST" id="formulario-contacto">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre *</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="apellido">Apellido *</label>
+                            <input type="text" class="form-control" id="apellido" name="apellido" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico *</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefono" name="telefono">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="asunto">Asunto</label>
+                        <input type="text" class="form-control" id="asunto" name="asunto">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje *</label>
+                        <textarea class="form-control" id="mensaje" name="mensaje" rows="5" required></textarea>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Juego Interactivo -->
+    <div class="game-container">
+        <h2 class="game-title">Aventura Patrimonial Dominicana</h2>
+        <p class="game-subtitle">Explora y aprende sobre el rico patrimonio de la República Dominicana</p>
+        
+        <div class="game-area">
+            <div class="score-container">
+                <div>Puntuación: <span id="score">0</span></div>
+                <div>Pregunta: <span id="questionNumber">1</span>/<span id="totalQuestions">10</span></div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            
+            <div class="scene" id="scene">
+                <div class="scene-overlay" id="sceneDescription"></div>
+            </div>
+            
+            <div class="question-container">
+                <div class="question" id="question"></div>
+                <div class="options" id="options"></div>
+                <div class="explanation" id="explanation">
+                    <div class="feedback" id="feedback"></div>
+                    <div id="explanationText"></div>
+                </div>
+                <button class="next-btn" id="nextBtn">Siguiente Pregunta</button>
+            </div>
+            
+            <div class="final-score" id="finalScore"></div>
+            
+            <button class="reset-btn" id="resetBtn">Reiniciar Juego</button>
+        </div>
+        
+        <div class="game-instructions">
+            <p>Responde correctamente para descubrir los tesoros culturales e históricos de República Dominicana.</p>
+            <p>¡Cada respuesta correcta te acerca más a convertirte en un experto del patrimonio dominicano!</p>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <img src="agn.2.PNG" alt="Logo Archivo General">
+                    <p>El Archivo General es la institución responsable de la custodia, organización, preservación y difusión del patrimonio documental nacional, garantizando su acceso y contribuyendo a la salvaguarda de la memoria histórica del país.</p>
+                    <p>Horario de atención: Lunes a Viernes de 8:00 a.m. a 4:00 p.m.</p>
+                    <div class="footer-links">
+                        <a href="Términos De Uso.html">Términos De Uso</a>
+                        <span class="separator">|</span>
+                        <a href="Políticas De Privacidad.html">Políticas De Privacidad</a>
+                    </div>
+                </div>
+                <div class="footer-links-section">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="Servicios.html">Servicios</a></li>
+                        <li><a href="Noticias.html">Noticias</a></li>
+                        <li><a href="Contacto.html">Contacto</a></li>
+                        <li><a href="Presentación.html">Presentación</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-contact">
+                        <li>Calle Principal #123, Ciudad Capital</li>
+                        <li>Teléfono: (809) 123-4567</li>
+                        <li>Email: AGN@archivodigital.gob</li>
+                        <li>Horario: Lunes a Viernes, 8:00 AM - 4:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Archivo General. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script para el formulario de contacto
+        document.addEventListener('DOMContentLoaded', function() {
+            const formulario = document.getElementById('formulario-contacto');
+            
+            if (formulario) {
+                formulario.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    
+                    // Aquí iría el código para enviar el formulario por AJAX
+                    // Por ahora, simplemente mostraremos un mensaje de confirmación
+                    document.getElementById('mensaje-confirmacion').style.display = 'block';
+                    
+                    // Limpiar el formulario
+                    formulario.reset();
+                    
+                    // Ocultar el mensaje después de 5 segundos
+                    setTimeout(function() {
+                        document.getElementById('mensaje-confirmacion').style.display = 'none';
+                    }, 5000);
+                });
+            }
+        });
+            
+        // Base de preguntas sobre patrimonio dominicano
+        const questions = [
+            {
+                question: "¿Cuál fue la primera ciudad fundada por los europeos en América?",
+                options: [
+                    "Santo Domingo", 
+                    "La Isabela", 
+                    "Santiago de los Caballeros", 
+                    "Puerto Plata"
+                ],
+                correctIndex: 0,
+                explanation: "Santo Domingo, fundada por Bartolomé Colón en 1496, es considerada la primera ciudad europea permanente en América. Su zona colonial fue declarada Patrimonio de la Humanidad por la UNESCO en 1990.",
+                scene: "https://via.placeholder.com/800x400?text=Santo+Domingo+Colonial",
+                sceneDescription: "Ciudad Colonial de Santo Domingo"
+            },
+            {
+                question: "¿Qué instrumento musical dominicano es considerado el símbolo nacional de la música popular?",
+                options: [
+                    "La guitarra", 
+                    "El güira", 
+                    "El tambor", 
+                    "El acordeón"
+                    ],
+                correctIndex: 1,
+                explanation: "El güira es un instrumento de percusión cilíndrico hecho de metal perforado que se raspa con un peine metálico. Es emblemático del merengue, género musical declarado Patrimonio Cultural Inmaterial de la Humanidad.",
+                scene: "https://via.placeholder.com/800x400?text=Güira+Dominicana",
+                sceneDescription: "Músico tocando la güira en una fiesta tradicional"
+            },
+            {
+                question: "¿Qué baile tradicional dominicano fue declarado Patrimonio Cultural Inmaterial de la Humanidad por la UNESCO en 2019?",
+                options: [
+                    "Bachata", 
+                    "Merengue", 
+                    "Salsa dominicana", 
+                    "Palo"
+                ],
+                correctIndex: 1,
+                explanation: "El merengue fue declarado Patrimonio Cultural Inmaterial de la Humanidad por la UNESCO en 2016 (no 2019). Es considerado el baile nacional de la República Dominicana.",
+                scene: "https://via.placeholder.com/800x400?text=Bailarines+de+Merengue",
+                sceneDescription: "Pareja bailando merengue con vestimenta tradicional"
+            },
+            {
+                question: "¿Cuál es el plato nacional de la República Dominicana?",
+                options: [
+                    "Sancocho", 
+                    "Mangú", 
+                    "La Bandera Dominicana", 
+                    "Mofongo"
+                ],
+                correctIndex: 2,
+                explanation: "La Bandera Dominicana es el plato nacional, compuesto por arroz blanco, habichuelas rojas y carne, acompañado de ensalada y plátanos fritos. Su nombre se debe a que representa los colores de la bandera dominicana.",
+                scene: "https://via.placeholder.com/800x400?text=La+Bandera+Dominicana+(plato)",
+                sceneDescription: "La Bandera Dominicana: arroz, habichuelas y carne"
+            },
+            {
+                question: "¿Qué fortaleza dominicana sirvió como prisión para Francisco Alberto Caamaño?",
+                options: [
+                    "Fortaleza San Felipe", 
+                    "Fortaleza Ozama", 
+                    "Fuerte San Gil", 
+                    "La Torre del Homenaje"
+                ],
+                correctIndex: 1,
+                explanation: "La Fortaleza Ozama, construida entre 1502 y 1508, es la fortificación militar más antigua de América. Sirvió como prisión para varias figuras históricas, incluyendo a Francisco Alberto Caamaño durante la dictadura de Trujillo.",
+                scene: "https://via.placeholder.com/800x400?text=Fortaleza+Ozama",
+                sceneDescription: "Fortaleza Ozama, la estructura militar europea más antigua de América"
+            },
+            {
+                question: "¿Cuál es el nombre de la montaña más alta del Caribe, ubicada en República Dominicana?",
+                options: [
+                    "Pico Isabel de Torres", 
+                    "Pico Duarte", 
+                    "Monte Tina", 
+                    "La Pelona"
+                ],
+                correctIndex: 1,
+                explanation: "El Pico Duarte, con 3,175 metros sobre el nivel del mar, es el punto más alto del Caribe. Se encuentra en la Cordillera Central y recibe su nombre en honor a Juan Pablo Duarte, padre de la patria dominicana.",
+                scene: "https://via.placeholder.com/800x400?text=Pico+Duarte",
+                sceneDescription: "Impresionante vista del Pico Duarte, la montaña más alta del Caribe"
+            },
+            {
+                question: "¿Qué patrimonio natural dominicano es hogar de especies endémicas como el solenodonte y la jutía?",
+                options: [
+                    "Lago Enriquillo", 
+                    "Los Haitises", 
+                    "Valle Nuevo", 
+                    "Bahía de Samaná"
+                ],
+                correctIndex: 1,
+                explanation: "El Parque Nacional Los Haitises es un área protegida conocida por sus formaciones kársticas, manglares y bosques húmedos. Es hogar de especies endémicas como el solenodonte y la jutía, mamíferos en peligro de extinción.",
+                scene: "https://via.placeholder.com/800x400?text=Los+Haitises",
+                sceneDescription: "Impresionante paisaje de mogotes en el Parque Nacional Los Haitises"
+            },
+            {
+                question: "¿Qué nombre recibía la República Dominicana durante la ocupación haitiana (1822-1844)?",
+                options: [
+                    "Saint-Domingue", 
+                    "Haití Español", 
+                    "Hispaniola", 
+                    "La Española"
+                ],
+                correctIndex: 1,
+                explanation: "Durante la ocupación haitiana (1822-1844), el territorio dominicano fue conocido como 'Haití Español'. Este período terminó con la independencia dominicana liderada por Juan Pablo Duarte, Francisco del Rosario Sánchez y Matías Ramón Mella.",
+                scene: "https://via.placeholder.com/800x400?text=Independencia+Dominicana",
+                sceneDescription: "Representación de la independencia dominicana del 27 de febrero de 1844"
+            },
+            {
+                question: "¿Qué antigua hacienda azucarera del siglo XVI es ahora un importante sitio arqueológico dominicano?",
+                options: [
+                    "Ingenio Boca de Nigua", 
+                    "Ingenio Engombe", 
+                    "Ingenio Diego Caballero", 
+                    "Ingenio Santa Ana"
+                ],
+                correctIndex: 0,
+                explanation: "El Ingenio Boca de Nigua, establecido en el siglo XVI, fue una de las plantaciones de azúcar más importantes de la época colonial. Hoy es un sitio arqueológico que refleja la historia de la esclavitud y la producción azucarera en la isla.",
+                scene: "https://via.placeholder.com/800x400?text=Ingenio+Boca+de+Nigua",
+                sceneDescription: "Ruinas del histórico Ingenio Boca de Nigua"
+            },
+            {
+                question: "¿Qué artesanía dominicana elaborada con barro se caracteriza por sus figuras costumbristas?",
+                options: [
+                    "Muñecas sin rostro", 
+                    "Ámbar tallado", 
+                    "Casitas de jengibre", 
+                    "Faceless Dolls"
+                ],
+                correctIndex: 0,
+                explanation: "Las muñecas sin rostro son una artesanía tradicional dominicana elaborada en barro. Representan la mezcla étnica del pueblo dominicano y, según la tradición, no tienen rostro porque simbolizan la fusión de todas las razas que conforman la identidad nacional.",
+                scene: "https://via.placeholder.com/800x400?text=Muñecas+sin+Rostro",
+                sceneDescription: "Coloridas muñecas sin rostro, artesanía tradicional dominicana"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let questionAnswered = false;
+
+        // Elementos del DOM
+        const sceneElement = document.getElementById('scene');
+        const sceneDescriptionElement = document.getElementById('sceneDescription');
+        const questionElement = document.getElementById('question');
+        const optionsElement = document.getElementById('options');
+        const explanationElement = document.getElementById('explanation');
+        const feedbackElement = document.getElementById('feedback');
+        const explanationTextElement = document.getElementById('explanationText');
+        const nextBtnElement = document.getElementById('nextBtn');
+        const scoreElement = document.getElementById('score');
+        const questionNumberElement = document.getElementById('questionNumber');
+        const totalQuestionsElement = document.getElementById('totalQuestions');
+        const progressElement = document.getElementById('progress');
+        const finalScoreElement = document.getElementById('finalScore');
+        const resetBtnElement = document.getElementById('resetBtn');
+
+        // Inicializar el juego
+        function initGame() {
+            currentQuestionIndex = 0;
+            score = 0;
+            scoreElement.textContent = score;
+            totalQuestionsElement.textContent = questions.length;
+            loadQuestion();
+            finalScoreElement.style.display = 'none';
+        }
+
+        // Cargar pregunta actual
+        function loadQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            questionAnswered = false;
+            
+            // Actualizar la escena
+            sceneElement.style.backgroundImage = `url('${currentQuestion.scene}')`;
+            sceneDescriptionElement.textContent = currentQuestion.sceneDescription;
+            
+            // Actualizar pregunta
+            questionElement.textContent = currentQuestion.question;
+            
+            // Actualizar número de pregunta
+            questionNumberElement.textContent = currentQuestionIndex + 1;
+            
+            // Actualizar barra de progreso
+            const progressPercentage = ((currentQuestionIndex) / questions.length) * 100;
+            progressElement.style.width = `${progressPercentage}%`;
+            
+            // Limpiar opciones anteriores
+            optionsElement.innerHTML = '';
+            
+            // Generar opciones
+            currentQuestion.options.forEach((option, index) => {
+                const optionBtn = document.createElement('button');
+                optionBtn.classList.add('option');
+                optionBtn.textContent = option;
+                optionBtn.addEventListener('click', () => selectOption(index));
+                optionsElement.appendChild(optionBtn);
+            });
+            
+            // Ocultar elementos
+            explanationElement.style.display = 'none';
+            nextBtnElement.style.display = 'none';
+        }
+
+        // Seleccionar una opción
+        function selectOption(selectedIndex) {
+            if (questionAnswered) return;
+            
+            questionAnswered = true;
+            const currentQuestion = questions[currentQuestionIndex];
+            const options = document.querySelectorAll('.option');
+            
+            // Marcar opciones correcta e incorrecta
+            options[currentQuestion.correctIndex].classList.add('correct');
+            
+            if (selectedIndex === currentQuestion.correctIndex) {
+                // Respuesta correcta
+                score++;
+                scoreElement.textContent = score;
+                feedbackElement.textContent = '¡Correcto! 🎉';
+            } else {
+                // Respuesta incorrecta
+                options[selectedIndex].classList.add('incorrect');
+                feedbackElement.textContent = '¡Incorrecto! 😔';
+            }
+            
+            // Mostrar explicación
+            explanationTextElement.textContent = currentQuestion.explanation;
+            explanationElement.style.display = 'block';
+            
+            // Mostrar botón para siguiente pregunta o finalizar
+            if (currentQuestionIndex < questions.length - 1) {
+                nextBtnElement.textContent = 'Siguiente Pregunta';
+                nextBtnElement.style.display = 'block';
+            } else {
+                nextBtnElement.textContent = 'Ver Resultados';
+                nextBtnElement.style.display = 'block';
+            }
+        }
+
+        // Avanzar a la siguiente pregunta
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showFinalScore();
+            }
+        }
+
+        // Mostrar puntuación final
+        function showFinalScore() {
+            const percentage = (score / questions.length) * 100;
+            let message;
+            
+            if (percentage >= 90) {
+                message = '¡Excelente! Eres un verdadero experto en el patrimonio dominicano.';
+            } else if (percentage >= 70) {
+                message = '¡Muy bien! Tienes un gran conocimiento sobre la cultura dominicana.';
+            } else if (percentage >= 50) {
+                message = '¡Buen trabajo! Has demostrado interés en el patrimonio dominicano.';
+            } else {
+                message = 'Gracias por jugar. ¡Sigue aprendiendo sobre la riqueza cultural dominicana!';
+            }
+            
+            finalScoreElement.innerHTML = `
+                <h2>Puntuación Final: ${score}/${questions.length}</h2>
+                <p>${message}</p>
+            `;
+            
+            document.querySelector('.question-container').style.display = 'none';
+            document.querySelector('.scene').style.display = 'none';
+            finalScoreElement.style.display = 'block';
+        }
+
+        // Reiniciar juego
+        function resetGame() {
+            document.querySelector('.question-container').style.display = 'block';
+            document.querySelector('.scene').style.display = 'block';
+            initGame();
+        }
+
+        // Inicializar eventos
+        window.onload = function() {
+            initGame();
+            nextBtnElement.addEventListener('click', nextQuestion);
+            resetBtnElement.addEventListener('click', resetGame);
+        };
+    </script>
+</body>
+</html>

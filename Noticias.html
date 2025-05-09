@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="estilos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivo General | Noticias</title>
+    <!-- Importamos Font Awesome para los iconos de redes sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Utilidades */
+        .btn-primary {
+            display: inline-block;
+            background-color: #FF9A52; /* Naranja claro */
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .btn-primary:hover {
+            background-color: #FF8533; /* Naranja más oscuro para hover */
+            transform: translateY(-2px);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            background-color: #fff;
+            color: #FF9A52;
+            border: 2px solid #FF9A52;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #FFF1E6; /* Naranja muy claro */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Cabecera */
+        .header-top {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 19px 0;
+            color: #fff;
+        }
+        
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-contact {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-contact span {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-media {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-media a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-media a:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Cabecera Principal */
+        .main-header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: center; /* Centrado ahora que no hay barra de búsqueda */
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 70px;
+        }
+        
+        .logo-text h1 {
+            color: #FF9A52; /* Naranja claro */
+            font-size: 24px;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Navegación Principal - Ahora horizontal centrada */
+        .main-nav {
+            background-color: #fff;
+            border-bottom: 2px solid #FFD6B8; /* Borde naranja claro */
+            padding: 5px 0;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu li a {
+            display: block;
+            color: #333;
+            padding: 12px 18px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-menu li a:hover {
+            color: #FF9A52; /* Naranja claro */
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+        }
+        
+        /* Navegación de migas de pan */
+        .breadcrumb {
+            padding: 10px 0;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .breadcrumb-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb-container a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .breadcrumb-container a:hover {
+            color: #FF9A52;
+        }
+        
+        .breadcrumb-separator {
+            margin: 0 8px;
+            color: #ccc;
+        }
+        
+        /* Estilos para la página de noticias */
+        .page-header {
+            background-color: #fff;
+            padding: 30px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .page-header h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        /* NUEVO ESTILO DE NOTICIAS - Estilo horizontal */
+        .news-section {
+            padding: 20px 0 60px;
+        }
+        
+        /* MODIFICACIÓN: Diseño para noticias horizontal con altura adaptable */
+        .news-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .news-item {
+            display: flex;
+            flex-direction: row; /* Imagen a la izquierda y contenido a la derecha */
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 220px; /* Altura mínima en lugar de fija */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .news-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        /* CAMBIO: Se modificó el estilo de la imagen para asegurar que se muestre completa */
+        .news-image {
+            width: 40%; /* Ancho ajustado para la imagen */
+            position: relative;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Mantiene la proporción y cubre el contenedor */
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-item:hover .news-image img {
+            transform: scale(1.05);
+        }
+        
+        .news-content {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+        
+        .news-title {
+            font-size: 18px; /* Tamaño aumentado */
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+            line-height: 1.3;
+            transition: color 0.3s;
+            /* Removido el límite de líneas para mostrar título completo */
+        }
+        
+        .news-item:hover .news-title {
+            color: #FF8533;
+        }
+        
+        .news-meta {
+            color: #FF8533;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .news-excerpt {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            flex-grow: 1;
+            /* Removido el límite de líneas para mostrar texto completo */
+        }
+        
+        .news-content .btn-primary {
+            align-self: flex-start;
+            margin-top: auto;
+        }
+        
+        .event-calendar h2 {
+            font-size: 24px;
+            color: #FF8533;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .calendar-dates {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .calendar-date {
+            text-align: center;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            min-width: 60px;
+        }
+        
+        .date-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF8533;
+        }
+        
+        .date-month {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #666;
+        }
+        
+        /* Pie de página */
+        footer {
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+            color: #333;
+            padding-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+        
+        .footer-about img {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+            color: #FF8533; /* Naranja más oscuro */
+        }
+        
+        .footer-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .footer-bottom {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .news-list {
+                grid-template-columns: 1fr; /* Una columna en móviles */
+            }
+            
+            .news-item {
+                height: auto;
+                flex-direction: column;
+            }
+            
+            .news-image {
+                width: 100%;
+                height: 200px; /* Altura fija para móviles */
+                position: relative; /* Asegura que la imagen se mantenga contenida */
+            }
+            
+            .news-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabecera Superior -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <span>📞 (809) 123-4567</span>
+                    <span>✉️ AGN@archivodigital.gob</span>
+                </div>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/AGNRD"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2FAGN_RD"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/agn_rd"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/c/ArchivoGeneraldelaNaci%C3%B3nRepublicaDominicana"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cabecera Principal -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="agn.2.PNG" alt="Logo Archivo Digital">
+                    <div class="logo-text">
+                        <h1>ARCHIVO GENERAL</h1>
+                        <p>Patrimonio Documental Nacional</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navegación Principal -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Servicios.html">Servicios</a></li>
+                <li><a href="Noticias.html">Noticias</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+                <li><a href="Presentación.html">Presentación</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="page-content">
+            <div class="breadcrumb">
+                <i class="fas fa-home" style="margin-right: 5px;"></i> 
+                Estás aquí: <a href="index.html">Inicio</a> / Noticias
+            </div>
+            <br>
+            <br>
+        </div>
+
+        <h1>Ultimas Noticias</h1>
+
+        <section class="news-section">
+            <div class="container">
+                <div class="news-list">
+                    <!-- Noticia 1 -->
+                    <article class="news-item">
+                        <div class="news-image">
+                            <img src="noticia1.PNG" alt="Mapas históricos digitalizados">
+                        </div>
+                        <div class="news-content">
+                            <h2 class="news-title">AGN celebrará Encuentro Nacional de Archivos</h2>
+                            <div class="news-meta">JUEVES, 03 ABRIL 2025</div>
+                            <p class="news-excerpt">El encuentro se llevará a cabo en el mes de octubre y podrán participar servidores vinculados con la labor archivística...</p>
+                            <a href="Encuentro.html" class="btn-primary">Leer más</a>
+                        </div>
+                    </article>
+                    
+                    <!-- Noticia 2 -->
+                    <article class="news-item">
+                        <div class="news-image">
+                            <img src="noticia2.PNG" alt="Exposición de documentos históricos">
+                        </div>
+                        <div class="news-content">
+                            <h2 class="news-title">El Archivo General de la Nación presenta la segunda versión de la Carta Compromiso al Ciudadano</h2>
+                            <div class="news-meta">LUNES, 17 MARZO 2025</div>
+                            <p class="news-excerpt">Santo Domingo. - El Archivo General de la Nación (AGN) presentó la segunda versión de su Carta Compromiso al Ciudadano...</p>
+                            <a href="Exposición.html" class="btn-primary">Leer más</a>
+                        </div>
+                    </article>
+                    
+                    <!-- Noticia 3 -->
+                    <article class="news-item">
+                        <div class="news-image">
+                            <img src="noticia3.PNG" alt="Firma de convenio educativo">
+                        </div>
+                        <div class="news-content">
+                            <h2 class="news-title">AGN presentará en San Juan el libro Con la Palabra de Dios de Roberto Cassá</h2>
+                            <div class="news-meta">MARTES, 25 FEBRERO 2025</div>
+                            <p class="news-excerpt">San Juan de la Maguana. – El Archivo General de la Nación (AGN), en colaboración con la Universidad Autónoma...</p>
+                            <a href="Firma.html" class="btn-primary">Leer más</a>
+                        </div>
+                    </article>
+                    
+                    <!-- Noticia 4 -->
+                    <article class="news-item">
+                        <div class="news-image">
+                            <img src="documentos.PNG" alt="Descubre documentos inéditos de Duarte en nueva exposición">
+                        </div>
+                        <div class="news-content">
+                            <h2 class="news-title">Descubre documentos inéditos de Duarte en nueva exposición</h2>
+                            <div class="news-meta">VIERNES, 07 FEBRERO 2025</div>
+                            <p class="news-excerpt">Santo Domingo.– En conmemoración del 212 aniversario del natalicio del Padre de la Patria, Juan Pablo Duarte...</p>
+                            <a href="documentos.html" class="btn-primary">Leer más</a>
+                        </div>
+                    </article>
+                    
+                    <!-- Noticia 5 -->
+                    <article class="news-item">
+                        <div class="news-image">
+                            <img src="donacion.PNG" alt="El AGN recibe donación de la Sra. Tatiana Pagés-Cortiñas">
+                        </div>
+                        <div class="news-content">
+                            <h2 class="news-title">El AGN recibe donación de la Sra. Tatiana Pagés-Cortiñas</h2>
+                            <div class="news-meta">LUNES, 03 FEBRERO 2025</div>
+                            <p class="news-excerpt">Santo Domingo. – La escritora Tatiana Pagés Cortiñas realizó una donación al Archivo General de la Nación...</p>
+                            <a href="donacion.html" class="btn-primary">Leer más</a>
+                        </div>
+                    </article>
+                    
+                    <!-- Noticia 6 -->
+                    <article class="news-item">
+                        <div class="news-image">
+                            <img src="patronato.PNG" alt="Patronato del AGN juramenta dos nuevos miembros">
+                        </div>
+                        <div class="news-content">
+                            <h2 class="news-title">Patronato del AGN juramenta dos nuevos miembros</h2>
+                            <div class="news-meta">MARTES, 04 FEBRERO 2025</div>
+                            <p class="news-excerpt">Santo Domingo. – El Patronato del Archivo General de la Nación (AGN) integró a dos nuevos miembros...</p>
+                            <a href="patronato.html" class="btn-primary">Leer más</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Pie de página -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <img src="agn.2.PNG" alt="Logo Archivo Digital">
+                    <p>El Archivo General es la institución responsable de la custodia, organización, preservación y difusión del patrimonio documental nacional, garantizando su acceso y contribuyendo a la salvaguarda de la memoria histórica del país.</p>
+                    <p>Horario de atención: Lunes a Viernes de 8:00 a.m. a 4:00 p.m.</p>
+                    <div class="footer-links">
+                        <a href="Términos De Uso.html">Términos De Uso</a>
+                        <span class="separator">|</span>
+                        <a href="Políticas De Privacidad.html">Políticas De Privacidad</a>
+                    </div>
+                </div>
+                <div class="footer-links-section">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="Servicios.html">Servicios</a></li>
+                        <li><a href="Noticias.html">Noticias</a></li>
+                        <li><a href="Contacto.html">Contacto</a></li>
+                        <li><a href="Presentación.html">Presentación</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-contact">
+                        <li>Calle Principal #123, Ciudad Capital</li>
+                        <li>Teléfono: (809) 123-4567</li>
+                        <li>Email: AGN@archivodigital.gob</li>
+                        <li>Horario: Lunes a Viernes, 8:00 AM - 4:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Archivo General. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

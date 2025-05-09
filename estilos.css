@@ -1,0 +1,81 @@
+.links-slider {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 20px 0;
+}
+
+.link-item {
+    text-align: center;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    width: 200px; /* Ancho fijo para mantener uniformidad */
+}
+
+
+
+
+
+
+/* Cabecera */
+.header-top {
+    background-color: #FF9A52; /* Naranja claro */
+    padding: 10px 0; /* Aumentado el padding vertical */
+    color: #fff;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+}
+
+.header-top-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    max-width: 1200px; /* Consistente con el ancho máximo del container */
+    margin: 0 auto; /* Centra el contenido */
+    padding: 0 15px; /* Mantiene el padding horizontal consistente */
+}
+
+/* El resto del código permanece igual */
+
+
+
+
+
+
+
+
+
+
+.video {
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    
+  }
+  
+  .video:hover {
+    transform: scale(1.03);
+  }
+  
+  /* Contenedor para centrar el video si es necesario */
+  .video-container {
+    text-align: center;
+    max-width: 100%;
+    padding: 20px 0;
+  }
+
+
+
+
+
+
+
+

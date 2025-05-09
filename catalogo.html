@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="estilos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivo General | Patrimonio Documental Nacional</title>
+    <!-- Importamos Font Awesome para los iconos de redes sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Utilidades */
+        .btn-primary {
+            display: inline-block;
+            background-color: #FF9A52; /* Naranja claro */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #FF8533; /* Naranja más oscuro para hover */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            background-color: #fff;
+            color: #FF9A52;
+            border: 2px solid #FF9A52;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #FFF1E6; /* Naranja muy claro */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Cabecera */
+        .header-top {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 21px 0;
+            color: #fff;
+        }
+        
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-contact {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-contact span {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-media {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-media a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-media a:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Cabecera Principal */
+        .main-header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: center; /* Centrado ahora que no hay barra de búsqueda */
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 70px;
+        }
+        
+        .logo-text h1 {
+            color: #FF9A52; /* Naranja claro */
+            font-size: 24px;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Navegación Principal - Ahora horizontal centrada */
+        .main-nav {
+            background-color: #fff;
+            border-bottom: 2px solid #FFD6B8; /* Borde naranja claro */
+            padding: 5px 0;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu li a {
+            display: block;
+            color: #333;
+            padding: 12px 18px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-menu li a:hover {
+            color: #FF9A52; /* Naranja claro */
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+        }
+        
+        /* Banner Principal - Simplificado */
+        .main-banner {
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .banner-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .banner-content h2 {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #FF8533; /* Naranja más oscuro */
+        }
+        
+        .banner-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        
+        .banner-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        /* Secciones */
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section:nth-child(even) {
+            background-color: #fff;
+        }
+        
+        .section:nth-child(odd) {
+            background-color: #FFF9F5; /* Naranja muy claro */
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            color: #FF8533; /* Naranja más oscuro */
+            font-size: 32px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #FF9A52; /* Naranja claro */
+        }
+        
+        /* Accesos Rápidos - 2 columnas en lugar de 4 */
+        .quick-access-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .quick-access-item {
+            display: flex;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            align-items: center;
+        }
+        
+        .quick-access-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .quick-access-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #FFF1E6; /* Naranja muy claro */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #FF9A52; /* Naranja claro */
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .quick-access-content {
+            flex-grow: 1;
+        }
+        
+        .quick-access-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #FF8533; /* Naranja más oscuro */
+        }
+        
+        .quick-access-item p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        /* Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            border-top: 4px solid #FF9A52; /* Borde superior naranja */
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            color: #FF8533; /* Naranja más oscuro */
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .service-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        /* Noticias - Rediseñadas como timeline */
+        .news-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .news-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 100%;
+            width: 2px;
+            background-color: #FFD6B8; /* Naranja muy claro */
+        }
+        
+        .news-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .news-item:nth-child(odd) {
+            padding-right: 50%;
+            text-align: right;
+        }
+        
+        .news-item:nth-child(even) {
+            padding-left: 50%;
+            text-align: left;
+        }
+        
+        .news-date {
+            display: inline-block;
+            background-color: #FF9A52; /* Naranja claro */
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .news-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .news-content h3 {
+            color: #FF8533; /* Naranja más oscuro */
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .news-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .news-circle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #FF9A52; /* Naranja claro */
+            border-radius: 50%;
+            top: 20px;
+        }
+        
+        .news-item:nth-child(odd) .news-circle {
+            right: -10px;
+        }
+        
+        .news-item:nth-child(even) .news-circle {
+            left: -10px;
+        }
+        
+        /* Enlaces - Rediseñados como slider horizontal */
+        .links-slider {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px 0;
+            gap: 20px;
+        }
+        
+        .link-item {
+            min-width: 180px;
+            text-align: center;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .link-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .link-item p {
+            font-size: 14px;
+            color: #FF8533; /* Naranja más oscuro */
+        }
+        
+        /* Pie de página */
+        footer {
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+            color: #333;
+            padding-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+        
+        .footer-about img {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+            color: #FF8533; /* Naranja más oscuro */
+        }
+        
+        .footer-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .footer-bottom {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .quick-access-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            
+            .news-timeline::before {
+                left: 20px;
+            }
+            
+            .news-item:nth-child(odd),
+            .news-item:nth-child(even) {
+                padding-left: 50px;
+                padding-right: 0;
+                text-align: left;
+            }
+            
+            .news-item:nth-child(odd) .news-circle,
+            .news-item:nth-child(even) .news-circle {
+                left: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Estilos para la sección de libros */
+        :root {
+            --naranja-claro: #ffcb9a;
+            --naranja-oscuro: #ff7b54;
+            --naranja-medio: #FF9A52;
+            --texto-oscuro: #5d4037;
+            --fondo-claro: #fff9f4;
+        }
+        
+        /* Estilos para libros */
+        .book-container {
+            margin-bottom: 3rem;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .book-container:hover {
+            transform: translateY(-5px);
+        }
+        
+        .book-item {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .book-item.right {
+            flex-direction: row-reverse;
+        }
+        
+        .book-cover {
+            flex: 0 0 250px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--naranja-claro);
+            padding: 15px;
+        }
+        
+        .book-cover img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .book-content {
+            flex: 1;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .book-title {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+            color: var(--texto-oscuro);
+        }
+        
+        .book-author {
+            color: #666;
+            margin: 0 0 1rem 0;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        
+        .book-summary {
+            color: #333;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .book-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        
+        .book-price {
+            font-weight: bold;
+            color: var(--naranja-oscuro);
+            font-size: 1.2rem;
+        }
+        
+        .book-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--naranja-medio);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .book-button:hover {
+            background-color: var(--naranja-oscuro);
+        }
+        
+        .book-type {
+            background-color: var(--naranja-claro);
+            color: var(--texto-oscuro);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .book-item, .book-item.right {
+                flex-direction: column;
+            }
+            
+            .book-cover {
+                flex: 0 0 auto;
+            }
+        }
+
+        /* Estilos para servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .services-grid-bottom {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255,154,82,0.3);
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .service-content {
+            padding: 20px;
+            background: #fff;
+        }
+        
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #FF9A52;
+        }
+        
+        .service-content p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #FF9A52;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e88a47;
+        }
+        
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabecera Superior -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <span>📞 (809) 123-4567</span>
+                    <span>✉️ AGN@archivodigital.gob</span>
+                </div>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/AGNRD"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2FAGN_RD"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/agn_rd"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/c/ArchivoGeneraldelaNaci%C3%B3nRepublicaDominicana"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cabecera Principal -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="agn.2.PNG" alt="Logo Archivo Digital">
+                    <div class="logo-text">
+                        <h1>ARCHIVO GENERAL</h1>
+                        <p>Patrimonio Documental Nacional</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navegación Principal -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Servicios.html">Servicios</a></li>
+                <li><a href="Noticias.html">Noticias</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+                <li><a href="Presentación.html">Presentación</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <br>
+
+
+    <div class="container">
+        <div class="section-title">
+            <h2>Catálogo de Libros</h2>
+        </div>
+
+
+    
+    <div class="container">
+        <!-- Libro 1 (Izquierda) - La esposa alemana -->
+        <div class="book-container">
+            <div class="book-item">
+                <div class="book-cover">
+                    <img src="mariposa.jfif" alt="En el tiempo de las mariposas">
+                </div>
+                <div class="book-content">
+                    <div>
+                        <span class="book-type">Novela histórica</span>
+                        <h3 class="book-title">En el tiempo de las mariposas</h3>
+                        <p class="book-summary">
+                            Inspirada en hechos reales, la novela narra la vida de las hermanas Mirabal (Patria, Minerva y María Teresa), conocidas como “Las Mariposas”, heroínas nacionales que lucharon contra el régimen de Trujillo. A través de una estructura polifónica, cada hermana relata su propia versión de los hechos, humanizando la resistencia política y mostrando cómo el activismo puede surgir del amor familiar y de la búsqueda de justicia. La obra también destaca los efectos del poder opresivo en las mujeres.                    </div>
+                            <div class="book-details">
+                                <span class="book-price">RD$ 850.00</span>
+                            </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Libro 2 (Derecha) - ¿Dónde están las llaves? -->
+        <div class="book-container">
+            <div class="book-item right">
+                <div class="book-cover">
+                    <img src="volcan.PNG" alt="¿Dónde están las llaves?">
+                </div>
+                <div class="book-content">
+                    <div>
+                        <span class="book-type">Novela filosófica</span>
+                        <h3 class="book-title">Bajo el volcán</h3>
+                        <p class="book-summary">
+                            Ubicada en México durante el Día de los Muertos, la novela sigue al cónsul británico Geoffrey Firmin, quien se ahoga en su alcoholismo mientras su exesposa Yvonne intenta salvarlo. La historia explora la desesperación existencial, la culpa, el fracaso amoroso y la caída inevitable de un hombre hacia su autodestrucción, todo envuelto en un paisaje simbólico y onírico.
+                </p>
+                <div class="book-details">
+                    <span class="book-price">RD$ 650.00</span>
+                </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        
+        <!-- Libro 3 (Izquierda) - ¡Yo quiero dinero! -->
+        <div class="book-container">
+            <div class="book-item">
+                <div class="book-cover">
+                    <img src="sombra.jfif" alt="¡Yo quiero dinero!">
+                </div>
+                <div class="book-content">
+                    <div>
+                        <span class="book-type">Novela contemporánea</span>
+                        <h3 class="book-title"> La sombra de los otros</h3>
+                        <p class="book-summary">
+                            La novela explora los secretos familiares y la identidad
+                            La novela explora los secretos familiares y la identidad a través de un protagonista que regresa a su país natal para enfrentarse a los fantasmas del pasado. Poco a poco, se revelan traiciones, silencios dolorosos y viejas heridas que marcan generaciones. Lantigua profundiza en cómo el legado familiar moldea la vida individual. La memoria y el olvido se entrelazan en una trama íntima. Es una historia de autoexploración y redención.
+                        </p>
+                        <div class="book-details">
+                            <span class="book-price">RD$ 450.00</span>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        
+        <!-- Libro 4 (Derecha) - Unidas por el sol naciente -->
+        <div class="book-container">
+            <div class="book-item right">
+                <div class="book-cover">
+                    <img src="insurreccion.PNG" alt="Unidas por el sol naciente">
+                </div>
+                <div class="book-content">
+                    <div>
+                        <span class="book-type">Novela política</span>
+                        <h3 class="book-title"> La insurrección</h3>
+                        <p class="book-summary">
+                            Ambientada en la Revolución de Abril de 1965, la novela describe el levantamiento cívico-militar para restaurar el gobierno democrático. A través de varios personajes, Bosch muestra las esperanzas, divisiones y traiciones del movimiento. Es un análisis profundo del idealismo y sus límites. La guerra, el heroísmo y la intervención extranjera son temas centrales. La narrativa combina rigor histórico con pasión.                        </p>
+                   
+                            <div class="book-details">
+                                <span class="book-price">RD$ 850.00</span>
+                            </div>
+                        </div>
+ 
+                </div>
+            </div>
+        </div>
+        
+        <!-- Libro 5 (Izquierda) - Productividad Feel Good -->
+        <div class="book-container">
+            <div class="book-item left">
+                <div class="book-cover">
+                    <img src="memoria.PNG" alt="Unidas por el sol naciente">
+                </div>
+                <div class="book-content">
+                    <div>
+                        <span class="book-type">Novela autobiográfica</span>
+                        <h3 class="book-title">Memorias de un amante sarnoso</h3>
+                        <p class="book-summary">
+                            Autobiografía novelada de Arenas, marcada por su infancia pobre en Cuba, su despertar sexual, y su enfrentamiento con la represión política y homofóbica. Con humor negro y desfachatez, relata su vida llena de excesos y persecuciones. Es un testimonio brutal y liberador. Arenas celebra la rebeldía y la pasión por la libertad. Su estilo es irreverente y profundamente humano.                        </p>
+                  
+                            <div class="book-details">
+                                <span class="book-price">RD$ 900.00</span>
+                            </div>
+                        </div>
+                  
+                </div>
+            </div>
+        </div>
+    
+
+
+
+
+
+    
+
+<!-- Añade esto justo después de la etiqueta <br> y antes del contenedor de libros -->
+<div class="info-box">
+    <div class="info-icon">
+        <i class="fas fa-info-circle"></i>
+    </div>
+    <div class="info-content">
+        <h3>Información Importante</h3>
+        <p>Le informamos que estos libros solo estan disponibles en fisico en el Archivo General de la Nación.
+     Para acceder a ellos tendrá que consultar una visita al Archivo general de la nación.<ul class="footer-links">
+        <li><a href="Contacto.html">Contacto</a></li>    </p></ul>
+    </div>
+</div>
+
+<!-- Añade estos estilos en la sección de estilos, justo antes del cierre de la etiqueta </style> -->
+<style>
+    /* Estilos para el cuadrado de información */
+    .info-box {
+        background-color: #FFF1E6;
+        border-left: 5px solid #FF9A52;
+        padding: 20px;
+        margin-bottom: 30px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    
+    .info-icon {
+        flex: 0 0 50px;
+        height: 50px;
+        background-color: #FF9A52;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+    }
+    
+    .info-icon i {
+        font-size: 24px;
+        color: white;
+    }
+    
+    .info-content {
+        flex: 1;
+    }
+    
+    .info-content h3 {
+        color: #FF8533;
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+    
+    .info-content p {
+        color: #666;
+        margin: 0;
+        line-height: 1.5;
+    }
+    
+    @media (max-width: 768px) {
+        .info-box {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .info-icon {
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+    }
+</style>
+
+
+    </div>
+    </div>
+
+
+
+    
+    <!-- Pie de página -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <img src="agn.2.PNG" alt="Logo Archivo Digital">
+                    <p>El Archivo General es la institución responsable de la custodia, organización, preservación y difusión del patrimonio documental nacional, garantizando su acceso y contribuyendo a la salvaguarda de la memoria histórica del país.</p>
+                    <p>Horario de atención: Lunes a Viernes de 8:00 a.m. a 4:00 p.m.</p>
+                    <div class="footer-links">
+                        <a href="Términos De Uso.html">Términos De Uso</a>
+                        <span class="separator">|</span>
+                        <a href="Políticas De Privacidad.html">Políticas De Privacidad</a>
+                      
+                    </div>
+                </div>
+                <div class="footer-links-section">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                <li><a href="Servicios.html">Servicios</a></li>
+                <li><a href="Noticias.html">Noticias</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+                <li><a href="Presentación.html">Presentación</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-contact-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-contact">
+                        <li>Calle Principal #123, Ciudad Capital</li>
+                        <li>Teléfono: (809) 123-4567</li>
+                        <li>Email: AGN@archivodigital.gob</li>
+                        <li>Horario: Lunes a Viernes, 8:00 AM - 4:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Archivo General. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

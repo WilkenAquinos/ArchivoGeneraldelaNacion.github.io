@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivo General | Patrimonio Documental Nacional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Utilidades */
+        .btn-primary {
+            display: inline-block;
+            background-color: #FF9A52; /* Naranja claro */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #FF8533; /* Naranja más oscuro para hover */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            background-color: #fff;
+            color: #FF9A52;
+            border: 2px solid #FF9A52;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #FFF1E6; /* Naranja muy claro */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Cabecera */
+        .header-top {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 19px 0;
+            color: #fff;
+        }
+        
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-contact {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-contact span {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-media {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-media a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-media a:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Cabecera Principal */
+        .main-header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: center; /* Centrado ahora que no hay barra de búsqueda */
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 70px;
+        }
+        
+        .logo-text h1 {
+            color: #FF9A52; /* Naranja claro */
+            font-size: 24px;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Navegación Principal - Ahora horizontal centrada */
+        .main-nav {
+            background-color: #fff;
+            border-bottom: 2px solid #FFD6B8; /* Borde naranja claro */
+            padding: 5px 0;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu li a {
+            display: block;
+            color: #333;
+            padding: 12px 18px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-menu li a:hover {
+            color: #FF9A52; /* Naranja claro */
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+        }
+        
+        /* Pie de página */
+        footer {
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+            color: #333;
+            padding-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+        
+        .footer-about img {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+            color: #FF8533; /* Naranja más oscuro */
+        }
+        
+        .footer-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .footer-bottom {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            
+            .book-collection {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .book-collection {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Estilos mejorados para la colección de libros */
+        .main-content {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .welcome {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #FFF9F5;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .welcome h2 {
+            color: #FF7F2A;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .welcome p {
+            font-size: 16px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            color: #FF7F2A;
+            font-size: 24px;
+            padding-bottom: 10px;
+            margin: 40px 0 20px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #FFB380;
+        }
+        
+        /* Nuevo diseño de colección de libros con grid - MODIFICADO A 3x2 */
+        .book-collection {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .book-item {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .book-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 20px rgba(255, 154, 82, 0.2);
+        }
+        
+        .book-cover {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .book-item:hover .book-cover img {
+            transform: scale(1.05);
+        }
+        
+        .book-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .book-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #FF7F2A;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .book-category {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+            background-color: #FFF1E6;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .book-button {
+            margin-top: auto;
+            text-align: center;
+        }
+        
+        .book-button a {
+            display: inline-block;
+            background-color: #FF9A52;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .book-button a:hover {
+            background-color: #FF8533;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabecera Superior -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <span>📞 (809) 123-4567</span>
+                    <span>✉️ AGN@archivodigital.gob</span>
+                </div>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/AGNRD"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2FAGN_RD"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/agn_rd"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/c/ArchivoGeneraldelaNaci%C3%B3nRepublicaDominicana"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cabecera Principal -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="agn.2.PNG" alt="Logo Archivo Digital">
+                    <div class="logo-text">
+                        <h1>ARCHIVO GENERAL</h1>
+                        <p>Patrimonio Documental Nacional</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navegación Principal -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Servicios.html">Servicios</a></li>
+                <li><a href="Noticias.html">Noticias</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+                <li><a href="Presentación.html">Presentación</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <style>
+        body {
+          background-color: #FF9A52; /* Color de fondo azul claro */
+        }
+      </style>
+
+    <style>
+
+        .content-container {
+            max-width: 95%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        
+        .breadcrumb {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        h1 {
+            font-size: 24px;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 10px;
+        }
+        
+        .content-divider {
+            border-bottom: 1px solid #ddd;
+            margin: 20px 0;
+        }
+        
+        .history-text {
+            line-height: 1.6;
+            color: #333;
+            text-align: justify;
+        }
+        
+        .history-text p {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div class="content-container">
+        <div class="breadcrumb">
+            Estás aquí: <a href="index.html">Inicio</a> / La Fiesta del Chivo
+        </div>
+        
+        <h1>La Fiesta del Chivo      </h1>
+        
+        <div class="content-divider"></div>
+        
+        <div class="history-text">
+
+          
+            <p>En la narrativa latinoamericana existe una larga tradición de novelas que abordan la figura del dictador. Fieles exponentes de esta línea argumental son <b>"El Señor Presidente"</b> (1946) de Miguel Angel Asturias; <b>"Yo, el Supremo"</b> (1974) de Augusto Roa Bastos, <b>"El Recurso del Método"</b> (1974) de Alejo Carpentier y <b>"El Otoño del Patriarca"</b> (1975) de Gabriel García Márquez. Sin embargo, este interés por indagar en el imaginario de caudillos y tiranos no es patrimonio exclusivo del llamado "Boom Latinoamericano". El escritor argentino José Mármol ya en 1855 describía el ambiente de la dictadura de Juan Manuel de Rosas en su novela <b>"Amalia"</b>.</p>
+
+<p><b>"La Fiesta del Chivo"</b> del peruano Mario Vargas Llosa se inscribe dentro de esta tradición literaria. La novela recrea los últimos días del dictador dominicano Rafael Leonidas Trujillo, que tuvo el poder absoluto de su país entre 1930 y 1961.</p>
+
+<p>La construcción del texto está sustentada en tres planos narrativos simultáneos. El primero corresponde al relato de Urania, hija del senador Agustín Cabral, que luego de 35 años regresa a República Dominicana a reencontrarse con su padre parapléjico y con su tormentoso pasado adolescente.</p>
+
+<p>La historia de Urania da inicio y término a la obra, en el mismo espacio, el Hotel Jaragua. Este personaje es, sin duda, el eje principal de la narración que nos entrega una perspectiva histórica del pasado de República Dominicana y también de su historia contemporánea. Esta voz femenina también se nos revela como un símbolo de lo que fue la mujer durante la dictadura trujillista. Es un personaje que se resiste al sometimiento del machismo caribeño, llevado al extremo por el "Chivo", apodo de Trujillo. Para el dictador, el sexo constituía un símbolo del poder, de su virilidad; por lo que la mujer era un objeto del que se disponía. Los padres regalaban a sus hijas al Benefactor de la Patria, quien además humillaba a sus colaboradores al acostarse con sus mujeres. Urania fue víctima de este abuso de poder.</p>
+
+<p>La segunda línea de desarrollo de la novela es la reconstrucción de la larga espera de los conspiradores en una carretera en las afueras de Ciudad Trujillo, nombre impuesto por el dictador a la antigua Santo Domingo. Antonio de la Maza, Amado García Guerrero, Salvador Estrella Sadhalá, Tony Imbert, Huáscar Tejeda, Pedro Livio Cedeño y Fifí Pastoriza, todos ex trujillistas, han asumido la misión de ajusticiar al Padre de la Patria Nueva, al Jefe Máximo. Los capítulos de esta línea del relato describen las circunstancias fortuitas de encuentro y los vínculos que van estableciendo los conspiradores para llegar a la conclusión de que el asesinato de Trujillo es la única salida para rescatar al país del estado de miedo y corrupción en que ha caído.</p>
+
+<p>El tercer plano narrativo se instala en la propia voz y conciencia del dictador dominicano y la ambigua relación que establece con sus colaboradores más cercanos, entre ellos, el jefe del temido Servicio de Inteligencia Militar (<b>SIM</b>) Johnny Abbes; el senador Henry Chirinos, el presidente "fantoche" Joaquín Balaguer, experto en artimañas jurídico-constitucionales; el ministro de las Fuerzas Armadas, general José René Román, y el presidente del Senado, Agustín Cabral, "Cerebrito", caído en desgracia a pesar de entregar 30 años de su vida a la defensa de la obra del Benefactor.</p>
+
+<p><b>"La Fiesta del Chivo"</b> se apoya en una paciente labor de investigación sobre la "Era de Trujillo". El propio autor confiesa que fueron más de tres años de documentación de una dictadura capaz de penetrar en las conciencias, y hasta en los sueños de los ciudadanos.</p>
+
+<p>La presencia de personajes reales e imaginarios en esta extensa novela ­el mismo Trujillo es una invención, por más que el personaje esté avalado por una rigurosa investigación historiográfica-, nos plantea la inquietud de por qué el autor recurre a la novela para dar cuenta de una determinada historia política y social, poniendo en tensión realidad y ficción.</p>
+
+<p>Mario Vargas Llosa en su ensayo <b>"Historicismo y Ficción"</b> entrega una respuesta a esta problemática al preguntarse ¿qué es la historia? y concluir que se trata de "una improvisación múltiple y constante, un animado caos al que los historiadores dan apariencia de orden (...) que desborda siempre los intentos racionales e intelectuales". En tanto, Honoré de Balzac, citado en el mismo ensayo, plantea con precisión que "la novela es la historia íntima de las naciones".</p>
+
+<p>Para plasmar en el texto la peculiar sensibilidad predominante durante la dictadura trujillista era necesario recurrir a esta estrategia narrativa: subvertir la historia en su rigidez normativa y sacarla de su asepsia escritural para contaminarla de la libertad creadora que entrega el espacio de la novela.</p>
+
+<p>No podía ser de otro modo, puesto que no podríamos comprender las atrocidades y arbitrariedades cometidas por un dictador como Trujillo, que tiene en sus manos el destino de tres millones de dominicanos, si el autor hubiese recurrido al reportaje de denuncia, al estilo de <b>"Noticia de un Secuestro"</b> de Gabriel García Márquez, o al relato histórico. Ello, por cuanto la ficción no elude la "verdad objetiva" de la historia, sino que por el contrario pone en evidencia su carácter complejo, se sumerge en sus contradicciones y aumenta su credibilidad.</p>
+
+<p>En el caso de <b>"La Fiesta del Chivo"</b> una pretendida "verdad objetiva" no podría dar cuenta del cambio de actitud de los conspiradores, ex trujillistas acérrimos, que entregan sumisamente su dignidad a un dictador considerado un Dios, pero que, a la vez, son capaces de ejecutar actos heroicos en aras de esa propia dignidad perdida.</p>
+
+<p>Esta dualidad está claramente expresada por el personaje Tony Imbert, uno de los ajusticiadores del Jefe: <b>"Había sido ese malestar de tantos años, pensar una cosa y hacer a diario algo que la contradecía, lo que lo llevó, siempre en el secreto de su mente, a sentenciar a muerte a Trujillo, a convencerse de que, mientras viviera, él y muchísimos dominicanos estarían condenados a esa horrible desazón y desagrado de sí mismos, a mentirse a cada instante y engañar a todos, a ser dos en uno, una mentira pública y una verdad privada prohibida de expresarse"</b>. (Pág. 187)</p>
+
+<p><b>"La Fiesta del Chivo"</b> es una obra realista, más que una novela histórica o una historia novelada. En ella hay un profundo cuestionamiento en torno al poder, sobre los límites a los cuales puede llegar un hombre que acumula una fuerza incontrolable y a una sociedad que se lo permitió.</p>
+
+<p>La reflexión de Urania frente a su padre es decidora en este sentido: <b>"Luego de tantos años de servir al Jefe, habías perdido los escrúpulos, la sensibilidad, el menor asomo de rectitud. Igual que tus colegas. Igual que el país entero, tal vez. ¿Era ése el requisito para mantenerse en el poder sin morirse de asco? Volverse un desalmado, un monstruo como tu Jefe"</b>. (Pág. 137)</p>
+
+<p>El entrecruzamiento de ficción, política y memoria convierten a la <b>"La Fiesta del Chivo"</b> en una obra que seduce por la técnica utilizada para narrar unos acontecimientos "tan increíbles que superan cualquier ficción", en palabras del autor. Una historia que puede parecernos lejana, pero que sin embargo sigue estando muy presente en nuestra memoria colectiva.</p>
+    
+        </div>
+    </div>
+
+
+
+
+<br>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <img src="agn.2.PNG" alt="Logo Archivo Digital">
+                    <p>El Archivo General es la institución responsable de la custodia, organización, preservación y difusión del patrimonio documental nacional, garantizando su acceso y contribuyendo a la salvaguarda de la memoria histórica del país.</p>
+                    <p>Horario de atención: Lunes a Viernes de 8:00 a.m. a 4:00 p.m.</p>
+                    <div class="footer-links">
+                        <a href="Términos De Uso.html">Términos De Uso</a>
+                        <span class="separator">|</span>
+                        <a href="Políticas De Privacidad.html">Políticas De Privacidad</a>
+                    </div>
+                </div>
+                <div class="footer-links-section">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="Servicios.html">Servicios</a></li>
+                        <li><a href="Noticias.html">Noticias</a></li>
+                        <li><a href="Contacto.html">Contacto</a></li>
+                        <li><a href="Presentación.html">Presentación</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-contact">
+                        <li>Calle Principal #123, Ciudad Capital</li>
+                        <li>Teléfono: (809) 123-4567</li>
+                        <li>Email: AGN@archivodigital.gob</li>
+                        <li>Horario: Lunes a Viernes, 8:00 AM - 4:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Archivo General. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

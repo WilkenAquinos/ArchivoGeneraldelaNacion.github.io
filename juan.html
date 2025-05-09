@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivo General | Patrimonio Documental Nacional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Utilidades */
+        .btn-primary {
+            display: inline-block;
+            background-color: #FF9A52; /* Naranja claro */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #FF8533; /* Naranja más oscuro para hover */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            background-color: #fff;
+            color: #FF9A52;
+            border: 2px solid #FF9A52;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #FFF1E6; /* Naranja muy claro */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Cabecera */
+        .header-top {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 19px 0;
+            color: #fff;
+        }
+        
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-contact {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-contact span {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-media {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-media a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-media a:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Cabecera Principal */
+        .main-header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: center; /* Centrado ahora que no hay barra de búsqueda */
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 70px;
+        }
+        
+        .logo-text h1 {
+            color: #FF9A52; /* Naranja claro */
+            font-size: 24px;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Navegación Principal - Ahora horizontal centrada */
+        .main-nav {
+            background-color: #fff;
+            border-bottom: 2px solid #FFD6B8; /* Borde naranja claro */
+            padding: 5px 0;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu li a {
+            display: block;
+            color: #333;
+            padding: 12px 18px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-menu li a:hover {
+            color: #FF9A52; /* Naranja claro */
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+        }
+        
+        /* Pie de página */
+        footer {
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+            color: #333;
+            padding-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+        
+        .footer-about img {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+            color: #FF8533; /* Naranja más oscuro */
+        }
+        
+        .footer-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .footer-bottom {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            
+            .book-collection {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .book-collection {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Estilos mejorados para la colección de libros */
+        .main-content {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .welcome {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #FFF9F5;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .welcome h2 {
+            color: #FF7F2A;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .welcome p {
+            font-size: 16px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            color: #FF7F2A;
+            font-size: 24px;
+            padding-bottom: 10px;
+            margin: 40px 0 20px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #FFB380;
+        }
+        
+        /* Nuevo diseño de colección de libros con grid - MODIFICADO A 3x2 */
+        .book-collection {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .book-item {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .book-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 20px rgba(255, 154, 82, 0.2);
+        }
+        
+        .book-cover {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .book-item:hover .book-cover img {
+            transform: scale(1.05);
+        }
+        
+        .book-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .book-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #FF7F2A;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .book-category {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+            background-color: #FFF1E6;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .book-button {
+            margin-top: auto;
+            text-align: center;
+        }
+        
+        .book-button a {
+            display: inline-block;
+            background-color: #FF9A52;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .book-button a:hover {
+            background-color: #FF8533;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabecera Superior -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <span>📞 (809) 123-4567</span>
+                    <span>✉️ AGN@archivodigital.gob</span>
+                </div>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/AGNRD"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2FAGN_RD"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/agn_rd"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/c/ArchivoGeneraldelaNaci%C3%B3nRepublicaDominicana"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cabecera Principal -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="agn.2.PNG" alt="Logo Archivo Digital">
+                    <div class="logo-text">
+                        <h1>ARCHIVO GENERAL</h1>
+                        <p>Patrimonio Documental Nacional</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navegación Principal -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Servicios.html">Servicios</a></li>
+                <li><a href="Noticias.html">Noticias</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+                <li><a href="Presentación.html">Presentación</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <style>
+        body {
+          background-color: #FF9A52; /* Color de fondo azul claro */
+        }
+      </style>
+
+    <style>
+
+        .content-container {
+            max-width: 95%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        
+        .breadcrumb {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        h1 {
+            font-size: 24px;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 10px;
+        }
+        
+        .content-divider {
+            border-bottom: 1px solid #ddd;
+            margin: 20px 0;
+        }
+        
+        .history-text {
+            line-height: 1.6;
+            color: #333;
+            text-align: justify;
+        }
+        
+        .history-text p {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div class="content-container">
+        <div class="breadcrumb">
+            Estás aquí: <a href="index.html">Inicio</a> / Juan Bosch
+        </div>
+        
+        <h1>Juan Bosch        </h1>
+        
+        <div class="content-divider"></div>
+        
+        <div class="history-text">
+
+          
+            <h2>Dos pesos de agua (1937)</h2>
+            <p>Originalmente publicado en la <em>Revista Carteles</em><br>
+            (28 de marzo de 1937), págs. 38-39 y 66-67;<br>
+            <em>Dos pesos de agua</em><br>
+            (La Habana: Ed. Impresor A. Ríos, 1941, 168 págs.);<br>
+            <em>Cuentos escritos antes del exilio</em><br>
+            (Santo Domingo: Editora Alfa y Omega, 1974, 284 págs.), págs. 15-30.</p>
+            
+            <p>La vieja Remigia sujeta el aparejo, alza la pequeña cara y dice:</p>
+            <p>—Dele ese rial fuerte a las ánimas pa que llueva, Felipa.</p>
+            <p>Felipa fuma y calla. Al cabo de tanto oír lamentar la sequía levanta los ojos y recorre el cielo con ellos. Claro, amplio y alto, el cielo se muestra sin una mancha. Es de una limpieza desesperante.</p>
+            <p>—Y no se ve nadita de nubes —comenta.</p>
+    
+            <p>Baja entonces la mirada. Los terrenos pardos se agrietan a la distancia. Allá, al pie de la loma, un bohío. La gente que vive en él, y en los otros, y en los más remotos, estará pensando como ella y como la vieja Remigia. ¡Nada de lluvia en una sarta bien larga de meses! Los hombres prenden fuego a los pinos de las lomas; el resplandor de los candelazos chamusca las escasas hojas de los maizales; algunas chispas vuelan como pájaros, dejando estelas luminosas, caen y florecen en incendios enormes: todo para que ascienda el humo a los cielos, para que llueva... Y nada. Nada.</p>
+
+            <p>—Nos vamos a acabar, Remigia —dice.</p>
+            
+            <p>La vieja comenta:</p>
+            
+            <p>—Pa lo que nos falta.</p>
+            
+            <p>La sequía había empezado matando la primera cosecha; cuando se hubo hecho larga y le sacó todo el jugo a la tierra, les cayó encima a los arroyos; poco a poco los cauces le fueron quedando anchos al agua, las piedras surgieron cubiertas de lama y los pececillos emigraron corriente abajo. Infinidad de caños acabaron por agotarse, otros por tornarse lagunas, otros lodazales.</p>
+            
+            <p>Sedientos y desesperados, muchos hombres abandonaron los conucos, aparejaron caballos y se fueron con las familias en busca de lugares menos áridos.</p>
+            
+            <p>La vieja Remigia se resistía a salir. Algún día caería el agua; alguna tarde se cargaría el cielo de nubes; alguna noche rompería el canto del aguacero sobre el ardido techo de yaguas. Algún día...</p>
+            
+            <p>***</p>
+            
+            <p>Desde que se quedó con el nieto, después que se llevaron al hijo en una parihuela, la vieja Remigia se hizo huraña y guardadora. Pieza a pieza fue juntando sus centavos en una higera con ceniza. Los centavos eran de cobre. Trabajaba en el conuquito, detrás de la casa, sembrando maíz y frijoles. El maíz lo usaba en engordar los pollos y los cerdos; los frijoles servían para la comida. Cada dos o tres meses reunía los pollos más gordos y se iba a venderlos. Cuando veía un cerdo mantecoso, lo mataba; ella misma detallaba la carne y de las capas extraía la grasa; con ésta y con los chicharrones se iba también al pueblo. Cerraba el bohío, le encarbaba a un vecino que le cuidara lo suyo, montaba el nieto en el potro bayo y lo seguía a pie. En la noche estaba de vuelta.</p>
+            
+            <p>Iba tejiendo su vida así, con el nieto colgado en el corazón.</p>
+            
+            <p>—Pa ti trabajo, muchacho —le decía—. No quiero que pases calores, ni que te vayas a malograr, como tu taita.</p>
+            
+            <p>El niño la miraba. Nunca se le oía hablar, y aunque apenas alzaba una vara del suelo, madrugaba con su machete bajo el brazo y el sol le salía sobre la espalda, limpiando el conuco.</p>
+            
+            <p>La vieja Remigia tenía sus esperanzas. Veía crecer el maíz, veía florecer los frijoles; oía el gruñido de sus puercos en la pocilga cercana; contaba las gallinas al anochecer, cuando subían a los palos. Entre días descolgaba la higera y sacaba los cobres. Había muchos, llegó también a haber monedas de plata de todos tamaños.</p>
+            
+            <p>Con un temblor de novia en la mano, Remigia acariciaba su dinero y soñaba. Veía al muchacho en tiempo de casarse, bien montado en brioso caballo alazano, o se lo figuraba tras un mostrador, despachando botellas de ron, varas de lienzo, libras de azúcar. Sonreía, tornaba a guardar su dinero, guindaba la higera y se acercaba al nieto, que dormía tranquilo.</p>
+            
+            <p>Todo iba bien, bien. Pero sin saberse cuándo ni cómo se presentó aquella sequía. Pasó un mes sin llover, pasaron dos, pasaron tres. Los hombres que cruzaban por delante de su bohío la saludaban diciendo:</p>
+            
+            <p>—Tiempo bravo, Remigia.</p>
+            
+            <p>Ella aprobaba en silencio. Acaso comentaba:</p>
+            
+            <p>—Prendiendo velas a las ánimas pasa esto.</p>
+            
+            <p>Pero no llovía. Se consumieron muchas velas y se consumió también el maíz en sus tallos. Se oían crujir los palos; se veían enflaquecer los caños de agua; en la pocilga empezó a endurecerse la tierra. A veces se cargaba el cielo de nubes; allá arriba se apelotonaban manchas grises; bajaban de las lomas vientos húmedos, que alzaban montones de polvo...</p>
+            
+            <p>—Esta noche sí llueve, Remigia —aseguraban los hombres que cruzaban.</p>
+            
+            <p>—¡Por fin! Va a ser hoy —decía una mujer.</p>
+            
+            <p>—Ya está casi cayendo —confiaba un negro.</p>
+            
+            <p>La vieja Remigia se acostaba y rezaba: ofrecía más velas a las ánimas y esperaba. A veces le parecía sentir el roncar de la lluvia que descendía de las altas lomas. Se dormía esperanzada; pero el cielo amanecía limpio como ropa de matrimonio.</p>
+            
+            <p>Comenzó la desesperación. La gente estaba ya transida y la propia tierra quemaba como si despidiera llamas. Todos los arroyos cercanos habían desaparecido; toda la vegetación de las lomas había sido quemada. No se conseguía comida para los cerdos; los asnos se alejaban en busca de mayas; las reses se perdían en los recodos, lamiendo raíces de árboles; los muchachos iban a distancias de medio día a buscar latas de agua; las gallinas se perdían en los montes, en procura de insectos y semillas.</p>
+            
+            <p>—Se acaba esto, Remigia. Se acaba —lamentaban las viejas.</p>
+            
+            <p>Un día, con la fresca del amanecer, pasó Rosendo con la mujer, los dos hijos, la vaca, el perro y un mulo flaco cargado de trastos.</p>
+            
+            <p>—Yo no aguanto, Remigia; a este lugar le han hecho mal de ojo.</p>
+            
+            <p>Remigia entró en el bohío, buscó dos monedas de cobre y volvió.</p>
+            
+            <p>—Tenga; préndamele esto de velas a las ánimas en mi nombre —recomendó.</p>
+            
+            <p>Rosendo cogió los cobres, los miró, alzó la cabeza y se cansó de ver cielo azul.</p>
+            
+            <p>—Cuando quiera, váyase a Tavera. Nosotros vamos a parar un rancho allá, y dende agora es suyo.</p>
+            
+            <p>—Yo me quedo, Rosendo. Esto no puede durar.</p>
+            
+            <p>Rosendo volvió el rostro. Su mujer y sus hijos se perdían ya en la distancia. El sol parecía incendiar las lomas remotas.</p>
+            
+            <p>***</p>
+            
+            <p>El muchacho se había puesto tan oscuro como un negro. Un día se le acercó:</p>
+            
+            <p>—Mamá, uno de los puerquitos parece muerto.</p>
+            
+            <p>Remigia se fue a la pocilga. Anhelantes, resecas las trompas, flacos como alambres, los cerdos gruñían y chillaban. Estaban apelotonados, y cuando Remigia los espantó vio restos de un animal. Comprendió: el muerto había alimentado a los vivos. Entonces decidió ir ella misma en busca de agua para que sus animales resistieran.</p>
+            
+            <p>Echaba por delante el potro bayo; salía de madrugada y retornaba a medio día. Incansable, tenaz, silenciosa, Remigia se mantenía sin una queja. Ya sentía menos peso en la higuera; pero había que seguir sacrificando algo para que las ánimas tuvieran piedad. El camino hasta el arroyo más cercano era largo; ella lo hacía a pie, para no cansar la bestia. El potro bayo tenía las ancas cortantes, el pescuezo flaco, y a veces se le oían chocar los huesos.</p>
+            
+            <p>El éxodo seguía. Cada día se cerraba un nuevo bohío. Ya la tierra parda se resquebrajaba; ya sólo los espinosos cambronales se sostenían verdes. En cada viaje el agua del arroyo era más escasa. A la semana había tanto lodo como agua; a las dos semanas el cauce era como un viejo camino pedregoso, donde refulgía el sol. La bestia, desesperada, buscaba donde ramonear y batía el rabo para espantar las moscas.</p>
+            
+            <p>Remigia no había perdido la fe. Esperaba las señales de lluvia en el alto cielo.</p>
+            
+            <p>—¡Ánimas del Purgatorio! —clamaba de rodillas—. ¡Ánimas del Purgatorio! ¡Nos vamos a morir achicharrados si ustedes no nos ayudan!</p>
+            
+            <p>Días más tarde el potro bayo amaneció tristón e incapaz de levantarse; esa misma tarde el nieto se tendió en el catre, ardiendo en fiebre. Remigia se echó afuera. Anduvo y anduvo, llamando en los distantes bohíos, levantando los espíritus.</p>
+            
+            <p>—Vamos a hacerle un rosario a San Isidro —decía.</p>
+            
+            <p>—Vamos a hacerle un rosario a San Isidro —repetía.</p>
+            
+            <p>Salieron una madrugada de domingo. Ella llevaba el niño en brazos. La cabeza del muchacho, cargada de calenturas, pendía como un bulto del hombro de su abuela. Quince o veinte mujeres, hombres y niños desharrapados, curtidos por el sol, entonaban cánticos tristes, recorriendo los pelados caminos. Llevaban una imagen de la Altagracia; le encendían velas; se arrodillaban y elevaban ruegos a Dios. Un viejo flaco, barbudo, de ojos ardientes y acerados, con el pecho desnudo, iba delante golpeándose el esternón con la mano descarnada, mirando a lo alto y clamando:</p>
+            
+            <p>¡San Isidro Labrador!<br>
+            ¡San Isidro Labrador!<br>
+            Trae el agua y quita el sol,<br>
+            ¡San Isidro Labrador!</p>
+            
+            <p>Sonaba ronca la voz del viejo. Detrás, las mujeres plañían y alzaban los brazos.</p>
+            
+            <p>***</p>
+            
+            <p>Ya se habían ido todos. Pasó Rosendo, pasó Toribio con una hija medio loca; pasó Felipe; pasaron unos y otros. Ella les dio a todos para las velas. Pasaron los últimos, una gente a quienes no conocía; llevaban un viejo enfermo y no podían con su tristeza; ella les dio para las velas.</p>
+            
+            <p>Se podía tender la vista sin tropiezos y ver desde la puerta del bohío el calcinado paisaje con las lomas peladas al final; se podían ver los cauces secos de los arroyos.</p>
+            
+            <p>Ya nadie esperaba lluvia. Antes de irse los viejos juraban que Dios había castigado el lugar y los jóvenes que tenía mal de ojo.</p>
+            
+            <p>Remigia esperaba. Recogía escasas gotas de agua. Sabía que había que empezar de nuevo, porque ya casi nada quedaba en la higuera, y el conuco estaba pelado como un camino real. Polvo y sol; sol y polvo. La maldición de Dios, por la maldad de los hombres, se había realizado allí; pero la maldición de Dios no podía acabar con la fe de Remigia.</p>
+            
+            <p>***</p>
+            
+            <p>En su rincón del Purgatorio, las ánimas, metidas de cintura abajo entre las llamas voraces, repasaban cuentas. Vivían consumidas por el fuego, purificándose; y, como burla sangrienta, tenían potestad para desatar la lluvia y llevar el agua a la tierra. Una de ellas, barbuda, dijo:</p>
+            
+            <p>—¡Caramba! ¡La vieja Remigia, de Paso Hondo, ha quemado ya dos pesos de velas pidiendo agua!</p>
+            
+            <p>Las compañeras saltaron vociferando:</p>
+            
+            <p>—¡Dos pesos, dos pesos!</p>
+            
+            <p>Alguna preguntó:</p>
+            
+            <p>—¿Por qué no se le ha atendido, como es costumbre?</p>
+            
+            <p>—¡Hay que atenderla! —rugió una de ojos impetuosos.</p>
+            
+            <p>—¡Hay que atenderla! —gritaron las otras.</p>
+            
+            <p>Se corría la voz, se repetían el mandato:</p>
+            
+            <p>—¡Hay que mandar agua a Paso Hondo! ¡Dos pesos de agua!</p>
+            
+            <p>—¡Dos pesos de agua a Paso Hondo!</p>
+            
+            <p>—¡Dos pesos de agua a Paso Hondo!</p>
+            
+            <p>Todas estaban impresionadas, casi fuera de sí, porque nunca llegó una entrega de agua a tal cantidad; ni siquiera a la mitad, ni aun a la tercera parte. Servían una noche de lluvia por dos centavos de velas, y cierta vez enviaron un diluvio entero por veinte centavos.</p>
+            
+            <p>—¡Dos pesos de agua a Paso Hondo! —rugían.</p>
+            
+            <p>Y todas las ánimas del Purgatorio se escandalizaban pensando en el agua que había que derramar por tanto dinero, mientras ellas ardían metidas en el fuego eterno, esperando que la suprema gracia de Dios las llamara a su lado.</p>
+            
+            <p>***</p>
+            
+            <p>Abajo, en Paso Hondo, se nubló el cielo. Muy de mañana Remigia miró hacia oriente y vio una nube negra y fina, tan negra como una cinta de luto y tan fina como la rabiza de un fuete. Una hora después inmensas lomas de nubes grises se apelotonaron, empujándose, avanzando, ascendiendo. Dos horas más tarde estaba oscuro como si fuera de noche.</p>
+            
+            <p>Llena de miedo, con el temor de que se deshiciera tanta ventura, Remigia callaba y miraba. El nieto seguía en el catre, calenturiento. Estaba flaco, igual que un sonajero de huesos. Los ojos parecían salirle de cuevas.</p>
+            
+            <p>Arriba estalló un trueno. Remigia corrió a la puerta. Avanzando como caballería rabiosa, un frente de lluvia venía de las lomas sobre el bohío. Ella sonrió de manera inconsciente; se sujetó las mejillas, abrió desmesuradamente los ojos. ¡Ya estaba lloviendo!</p>
+            
+            <p>Rauda, pesada, cantando broncas canciones, la lluvia llegó hasta el camino real, resonó en el techo de yaguas, saltó el bohío, empezó a caer en el conuco. Sintiéndose arder, Remigia corrió a la puerta del patio y vio descender, apretados, los hilos gruesos del agua; vio la tierra adormecerse y despedir un vaho espeso. Se tiró afuera, rabiosa.</p>
+            
+            <p>—¡Yo sabía, yo lo sabía, yo lo sabía! —gritaba a voz en cuello.</p>
+            
+            <p>—¡Lloviendo, lloviendo! —clamaba con los brazos tendidos hacia el cielo—. ¡Yo lo sabía!</p>
+            
+            <p>De pronto penetró en la casa, tomó al niño, lo apretó contra su pecho, lo alzó, lo mostró a la lluvia.</p>
+            
+            <p>—¡Bebe, muchacho; bebe, hijo mío! ¡Mira agua, mira agua!</p>
+            
+            <p>Y sacudía al nieto, lo estrujaba; parecía querer meterle dentro el espíritu fresco y disperso del agua.</p>
+            
+            <p>***</p>
+            
+            <p>Mientras afuera bramaba el temporal, soñaba adentro Remigia.</p>
+            
+            <p>—Ahora —se decía—, en cuanto la tierra se ablande, siembro batata, arroz tresmesino, frijoles y maíz. Todavía me quedan unos cuartitos con que comprar semillas. El muchacho se va a sanar. ¡Lástima que la gente se haya ido! Quisiera verle la cara a Toribio, a ver qué pensaría de este aguacero. Tantas rogaciones, y sólo me van a aprovechar a mí. Quizá vengan agora, cuando sepan que ya pasó el mal de ojo.</p>
+            
+            <p>El nieto dormía tranquilo. En Paso Hondo, por los secos cauces de los arroyos y los ríos, empezaba a rodar agua sucia; todavía era escasa y se estancaba en las piedras. De las lomas bajaba roja, cargada de barro; de los cielos descendía pesada y rauda. El techo de yaguas se desmigajaba con los golpes múltiples del aguacero. Remigia se adormecía y veía su conuco lleno de plantas verdes, lozanas, batidas por la brisa fresca; veía los rincones llenos de dorado maíz, de arroz, frijoles, de batatas henchidas. El sueño le tornaba pesada la cabeza.</p>
+            
+            <p>Y afuera seguía bramando la lluvia incansable.</p>
+            
+            <p>***</p>
+            
+            <p>Pasó una semana; pasaron diez días, quince... Zumbaba el aguacero sin una hora de tregua. Se acabaron el arroz y la manteca; se acabó la sal. Bajo el agua tomó Remigia el camino de Las Cruces para comprar comida. Salió de mañana y retornó a media noche. Los ríos, los caños de agua y hasta las lagunas se adueñaban del mundo, borraban los caminos, se metían lentamente entre los conucos. Una tarde pasó un hombre. Montaba mulo pesado.</p>
+            
+            <p>—¡Ey, don! —llamó Remigia.</p>
+            
+            <p>El hombre metió la cabeza del animal por la puerta.</p>
+            
+            <p>—Bájese pa que se caliente —invitó ella.</p>
+            
+            <p>La montura se quedó a la intemperie.</p>
+            
+            <p>—El cielo se ta cayendo en agua —explicó él al rato. —Yo como usté dejaba este sitio tan bajito y me diba pa las lomas.</p>
+            
+            <p>—¿Yo dirme? No, hijo. Horita pasa este tiempo.</p>
+            
+            <p>—Vea —se extendió el visitante—, esto es una niega. Yo las he visto tremendas, con el agua llevándose animales, bohíos, matas y gente. Horita se crecen todos los caños que yo he dejado atrás, contimás que ta lloviéndoles duro en las cabezadas.</p>
+            
+            <p>—Jum… Peor que esto fue la seca, don. Todo el mundo le salió huyendo, y yo la aguanté.</p>
+            
+            <p>—La seca no mata, pero el agua ahoga, doña. Todo eso —y señaló lo que él había dejado a la puerta— ta anegado. Como tres horas tuve esta mañana sin salir de un agua que me le daba en la barriga al mulo.</p>
+            
+            <p>El hombre hablaba con voz pausada, y sus ojos grises, atemorizados, vigilaban el incesante caer de la lluvia.</p>
+            
+            <p>Al anochecer se fue. Mucho le rogó Remigia que no cogiera el camino con la oscuridad.</p>
+            
+            <p>—Dispué es peor, doña. Van esos ríos y se botan...</p>
+            
+            <p>Remigia se fue a atender al nieto, que se quejaba débilmente.</p>
+            
+            <p>***</p>
+            
+            <p>Tuvo razón el hombre. ¡Qué noche, Dios! Se oía un rugir sordo e inquietante; se oían retumbar los truenos; penetraban los reflejos de los relámpagos por las múltiples rendijas.</p>
+            
+            <p>El agua sucia entró por los quicios y empezó a esparcirse en el suelo. Bravo era el viento en la distancia, y a ratos parecía arrancar árboles. Remigia abrió la puerta. Un relámpago lejano alumbró el sitio de Paso Hondo. ¡Agua y agua! Agua aquí, allá, más lejos, entre los troncos escasos, en los lugares pelados. Debía descender de las lomas y en el camino real se formaba un río torrentoso.</p>
+            
+            <p>—¿Será una niega? —se preguntó Remigia, dudando por vez primera.</p>
+            
+            <p>Pero cerró la puerta y entró. Ella tenía fe; una fe inagotable, más que lo que había sido la sequía, más que lo sería la lluvia. Por dentro, su bohío estaba tan mojado como por fuera. El muchacho se encogía en el catre, rehuyendo las goteras.</p>
+            
+            <p>A medianoche la despertó un golpe en una esquina de la vivienda. Se fue a levantar, pero sintió agua hasta casi las rodillas. Bramaba afuera el viento. El agua batía contra los setos del bohío.</p>
+            
+            <p>¡Ay de la noche horrible, de la noche anegada! Venía el agua en golpes; venía y todo lo cundía, todo lo ahogaba. Restalló otro relámpago, y el trueno desgajó pedazos de oscuro cielo.</p>
+            
+            <p>Remigia sintió miedo.</p>
+            
+            <p>—¡Virgen Santísima! —clamó—. ¡Virgen Santísima, ayúdame!</p>
+            
+            <p>Pero no era negocio de la Virgen, ni de Dios, sino de las ánimas, que allá arriba gritaban:</p>
+            
+            <p>—¡Ya va medio peso de agua! ¡Ya va medio peso!</p>
+            
+            <p>***</p>
+            
+            <p>Cuando sintió el bohío torcerse por los torrentes, Remigia desistió de esperar y levantó al nieto. Se lo pegó al pecho; lo apretó, febril; luchó con el agua que le impedía caminar; empujó, como pudo, la puerta y se echó afuera. A la cintura llevaba el agua; y caminaba, caminaba. No sabía adónde iba. El terrible viento le destrenzaba el cabello, los relámpagos verdeaban en la distancia. El agua crecía, crecía. Levantó más al nieto. Después tropezó y tornó a pararse. Seguía sujetando al niño y gritando:</p>
+            
+            <p>—¡Virgen Santísima, Virgen Santísima!</p>
+            
+            <p>Se llevaba el viento su voz y la esparcía sobre la gran llanura líquida.</p>
+            
+            <p>—¡Virgen Santísima, Virgen Santísima!</p>
+            
+            <p>Su falda flotaba. Ella rodaba, rodaba. Sintió que algo le sujetaba el cabello, que le amarraban la cabeza. Pensó:</p>
+            
+            <p>—En cuanto esto pase siembro batata.</p>
+            
+            <p>Veía el maíz metido bajo el agua sucia. Hincaba las uñas en el pecho del nieto.</p>
+            
+            <p>—¡Virgen Santísima!</p>
+            
+            <p>Seguía ululando el viento, y el trueno rompía los cielos. Se le quedó el cabello enredado en un tronco espinoso. El agua corría hacia abajo, hacia abajo, arrastrando bohíos y troncos. Las ánimas gritaban, enloquecidas:</p>
+            
+            <p>—¡Todavía falta; todavía falta! ¡Son dos pesos, dos pesos de agua! ¡Son dos pesos de agua!</p>
+    
+        </div>
+    </div>
+
+
+
+
+<br>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <img src="agn.2.PNG" alt="Logo Archivo Digital">
+                    <p>El Archivo General es la institución responsable de la custodia, organización, preservación y difusión del patrimonio documental nacional, garantizando su acceso y contribuyendo a la salvaguarda de la memoria histórica del país.</p>
+                    <p>Horario de atención: Lunes a Viernes de 8:00 a.m. a 4:00 p.m.</p>
+                    <div class="footer-links">
+                        <a href="Términos De Uso.html">Términos De Uso</a>
+                        <span class="separator">|</span>
+                        <a href="Políticas De Privacidad.html">Políticas De Privacidad</a>
+                    </div>
+                </div>
+                <div class="footer-links-section">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="Servicios.html">Servicios</a></li>
+                        <li><a href="Noticias.html">Noticias</a></li>
+                        <li><a href="Contacto.html">Contacto</a></li>
+                        <li><a href="Presentación.html">Presentación</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-contact">
+                        <li>Calle Principal #123, Ciudad Capital</li>
+                        <li>Teléfono: (809) 123-4567</li>
+                        <li>Email: AGN@archivodigital.gob</li>
+                        <li>Horario: Lunes a Viernes, 8:00 AM - 4:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Archivo General. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

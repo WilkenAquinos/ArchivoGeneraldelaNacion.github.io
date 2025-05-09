@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="estilos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivo General | Patrimonio Documental Nacional</title>
+    <!-- Importamos Font Awesome para los iconos de redes sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Contenedores */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Utilidades */
+        .btn-primary {
+            display: inline-block;
+            background-color: #FF9A52; /* Naranja claro */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #FF8533; /* Naranja más oscuro para hover */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            background-color: #fff;
+            color: #FF9A52;
+            border: 2px solid #FF9A52;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #FFF1E6; /* Naranja muy claro */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Cabecera */
+        .header-top {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 19px 0;
+            color: #fff;
+        }
+        
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-contact {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-contact span {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-media {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-media a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-media a:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Cabecera Principal */
+        .main-header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: center; /* Centrado ahora que no hay barra de búsqueda */
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+  
+
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 70px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .logo-text h1 {
+            color: #FF9A52; /* Naranja claro */
+            font-size: 24px;
+            line-height: 1.2;
+            text-align: left;
+            margin: 0;
+            font-weight: normal;
+        }
+        
+        .logo-text p {
+            color: #666;
+            font-size: 14px;
+            text-align: left;
+            margin: 0;
+            border-top: none;
+        }
+        
+
+
+        
+        /* Navegación Principal - Ahora horizontal centrada */
+        .main-nav {
+            background-color: #fff;
+            border-bottom: 2px solid #FFD6B8; /* Borde naranja claro */
+            padding: 5px 0;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu li a {
+            display: block;
+            color: #333;
+            padding: 12px 18px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            text-align: center; /* Alineación explícita */
+        }
+        
+        .nav-menu li a:hover {
+            color: #FF9A52; /* Naranja claro */
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+        }
+        
+        /* Banner Principal - Simplificado */
+        .main-banner {
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .banner-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .banner-content h2 {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #FF8533; /* Naranja más oscuro */
+            text-align: center; /* Alineación explícita */
+        }
+        
+        .banner-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #666;
+            text-align: center; /* Alineación explícita */
+        }
+        
+        .banner-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        /* Secciones */
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section:nth-child(even) {
+            background-color: #fff;
+        }
+        
+        .section:nth-child(odd) {
+            background-color: #FFF9F5; /* Naranja muy claro */
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            color: #FF8533; /* Naranja más oscuro */
+            font-size: 32px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            text-align: center; /* Alineación explícita */
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #FF9A52; /* Naranja claro */
+        }
+        
+        /* Accesos Rápidos - 2 columnas en lugar de 4 */
+        .quick-access-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .quick-access-item {
+            display: flex;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            align-items: center;
+        }
+        
+        .quick-access-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .quick-access-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #FFF1E6; /* Naranja muy claro */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #FF9A52; /* Naranja claro */
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .quick-access-content {
+            flex-grow: 1;
+        }
+        
+        .quick-access-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #FF8533; /* Naranja más oscuro */
+            text-align: left; /* Alineación explícita */
+        }
+        
+        .quick-access-item p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-align: left; /* Alineación explícita */
+        }
+        
+        /* Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            border-top: 4px solid #FF9A52; /* Borde superior naranja */
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            color: #FF8533; /* Naranja más oscuro */
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-align: center; /* Alineación explícita */
+        }
+        
+        .service-content p {
+            color: #666;
+            margin-bottom: 20px;
+            text-align: left; /* Alineación explícita */
+        }
+        
+        /* Noticias - Rediseñadas como timeline */
+        .news-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .news-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 100%;
+            width: 2px;
+            background-color: #FFD6B8; /* Naranja muy claro */
+        }
+        
+        .news-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .news-item:nth-child(odd) {
+            padding-right: 50%;
+            text-align: right;
+        }
+        
+        .news-item:nth-child(even) {
+            padding-left: 50%;
+            text-align: left;
+        }
+        
+        .news-date {
+            display: inline-block;
+            background-color: #FF9A52; /* Naranja claro */
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .news-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .news-content h3 {
+            color: #FF8533; /* Naranja más oscuro */
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .news-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .news-circle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #FF9A52; /* Naranja claro */
+            border-radius: 50%;
+            top: 20px;
+        }
+        
+        .news-item:nth-child(odd) .news-circle {
+            right: -10px;
+        }
+        
+        .news-item:nth-child(even) .news-circle {
+            left: -10px;
+        }
+        
+        /* Enlaces - Rediseñados como slider horizontal */
+        .links-slider {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px 0;
+            gap: 20px;
+        }
+        
+        .link-item {
+            min-width: 180px;
+            text-align: center;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .link-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .link-item p {
+            font-size: 14px;
+            color: #FF8533; /* Naranja más oscuro */
+            text-align: center; /* Alineación explícita */
+        }
+        
+        /* Pie de página */
+        footer {
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+            color: #333;
+            padding-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+        
+        .footer-about img {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            color: #666;
+            margin-bottom: 20px;
+            text-align: left; /* Alineación explícita */
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+            color: #FF8533; /* Naranja más oscuro */
+            text-align: left; /* Alineación explícita */
+        }
+        
+        .footer-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+            text-align: left; /* Alineación explícita */
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
+            color: #666;
+            text-align: left; /* Alineación explícita */
+        }
+        
+        .footer-bottom {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+        }
+        
+        /* Estilos para la página de noticias */
+        .breadcrumb {
+            color: #666;
+            font-size: 14px;
+            margin: 15px 0;
+            padding: 0 20px; /* Añadido padding para mejor alineación */
+            text-align: left; /* Alineación explícita */
+        }
+        
+        .breadcrumb a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 20px 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+            padding: 0 20px 15px; /* Añadido padding para mejor alineación */
+            text-align: left; /* Alineación explícita */
+        }
+        
+        .date {
+            font-weight: bold;
+            margin-top: 30px;
+            padding: 0 20px; /* Añadido padding para mejor alineación */
+            text-align: left; /* Alineación explícita */
+        }
+        
+        /* Estilos para los párrafos de la noticia */
+        .news-content-container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .news-content-container p {
+            margin: 15px 0;
+            text-align: left; /* Alineación explícita */
+            line-height: 1.8; /* Mejor espaciado entre líneas */
+        }
+        
+        .location {
+            font-weight: bold;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            margin-top: 25px;
+            text-align: left; /* Alineación explícita */
+        }
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ddd;
+            margin: 20px 20px; /* Ajustado el margen */
+            width: calc(100% - 40px); /* Ancho ajustado para mantener alineación */
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .quick-access-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            
+            .news-timeline::before {
+                left: 20px;
+            }
+            
+            .news-item:nth-child(odd),
+            .news-item:nth-child(even) {
+                padding-left: 50px;
+                padding-right: 0;
+                text-align: left;
+            }
+            
+            .news-item:nth-child(odd) .news-circle,
+            .news-item:nth-child(even) .news-circle {
+                left: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            h1, .breadcrumb, .date, .news-content-container p {
+                padding: 0 15px; /* Padding reducido en pantallas pequeñas */
+            }
+            
+            hr {
+                margin: 20px 15px;
+                width: calc(100% - 30px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabecera Superior -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <span>📞 (809) 123-4567</span>
+                    <span>✉️ AGN@archivodigital.gob</span>
+                </div>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/AGNRD"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2FAGN_RD"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/agn_rd"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/c/ArchivoGeneraldelaNaci%C3%B3nRepublicaDominicana"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cabecera Principal -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="agn.2.PNG" alt="Logo Archivo Digital">
+                    <div class="logo-text">
+                        <h1>ARCHIVO GENERAL</h1>
+                        <p>Patrimonio Documental Nacional</p>
+                    </div>
+                </div>
+                <!-- La barra de búsqueda ha sido eliminada aquí -->
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navegación Principal -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Servicios.html">Servicios</a></li>
+                <li><a href="Noticias.html">Noticias</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+                <li><a href="Presentación.html">Presentación</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <br>
+
+    <div style="text-align: center;">
+        <img src="donacion.PNG" alt="Descripción de la imagen" width="1300" height="600">
+    </div>
+
+    <div class="breadcrumb">
+        Estás aquí: <a href="index.html">Inicio</a> / <a href="Noticias.html">Noticias</a> / El AGN recibe donación de la Sra. Tatiana Pagés-Cortiñas
+
+
+
+    </div>
+
+    <h1>El AGN recibe donación de la Sra. Tatiana Pagés-Cortiñas
+
+
+    </h1>
+    <hr>
+
+    <div class="news-content-container">
+        <div class="date">Lunes, 03 Febrero 2025        </div>
+
+
+<p>Santo Domingo. – La escritora Tatiana Pagés Cortiñas realizó una donación al Archivo General de la Nación que incluye documentos y fotografías personales de gran valor histórico, vinculados a la familia de su esposo, Alberto Tomás Cortiñas Estrella.
+</p>
+
+<p>La donación resguarda elementos clave de la historia política y militar del país, con registros sobre el Ex-Contralmirante de la Marina de Guerra Dominicana y Jefe de Estado Mayor en 1956-1957, Tomás Emilio Cortiñass Criado, quien fundó el Departamento Nacional de Investigaciones (DNI). Además, se incluyen documentos relacionados con su madre, Olga Estrella Martínez, su abuelo, Rafael Estrella Ureña, presidente provisional en 1930, y su abuela, Tomasina Martínez, la primera dama más joven en la historia de la República Dominicana.
+</p>
+
+<p>Entre los materiales donados se encuentran cartas matrimoniales de Rafael Estrella Ureña a Tomasina Martínez y de Tomás Cortiñass Criado a Olga Estrella Martínez, así como documentos de identificación de la familia exiliada en La Habana, Cuba. También forman parte de la colección las condolencias recibidas por la viuda de Estrella Ureña tras su fallecimiento en 1945, incluyendo mensajes de Rafael Trujillo y su gabinete, así como condolencias tras la trágica muerte de Alberto Estrella en la Tragedia de Río Verde.
+</p>
+
+<p>Este archivo histórico también contiene fotografías inéditas de agentes, jefes de operaciones y mercenarios vinculados a la CIA y el FBI en el contexto de la Guerra Fría. En algunas imágenes se han identificado figuras relevantes como un guardaespaldas de la CIA que protegió a la familia Cortiñas Estrella durante el exilio en Queens, Nueva York tras la muerte de Trujillo y un jefe de Estación de la CIA, apellido Mestres, quien colaboró con el Ex-Contralmirante Cortiñas Criado durante la Revolución de 1965 en el Hotel Embajador.
+</p>
+
+<p>Consciente de la importancia de preservar la historia nacional, la Sra. Tatiana Pagés Cortiñas manifestó que mantener estos documentos en archivos personales habría significado el riesgo de que se perdieran con el tiempo. Por ello, tomó la decisión de compartirlos con el Archivo General de la Nación, garantizando su acceso para futuras generaciones e investigadores.
+</p>
+
+<p>El Archivo General de la Nación reitera su agradecimiento por esta donación y reafirma su compromiso con la conservación y divulgación de la historia dominicana.
+</p>
+
+    </div>
+    
+    <!-- Pie de página -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <img src="agn.2.PNG" alt="Logo Archivo Digital">
+                    <p>El Archivo General es la institución responsable de la custodia, organización, preservación y difusión del patrimonio documental nacional, garantizando su acceso y contribuyendo a la salvaguarda de la memoria histórica del país.</p>
+                    <p>Horario de atención: Lunes a Viernes de 8:00 a.m. a 4:00 p.m.</p>
+                    <div class="footer-links">
+                        <a href="Términos De Uso.html">Términos De Uso</a>
+                        <span class="separator">|</span>
+                        <a href="Políticas De Privacidad.html">Políticas De Privacidad</a>
+                    </div>
+                </div>
+                <div class="footer-links-section">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="Servicios.html">Servicios</a></li>
+                        <li><a href="Noticias.html">Noticias</a></li>
+                        <li><a href="Contacto.html">Contacto</a></li>
+                        <li><a href="Presentación.html">Presentación</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-contact">
+                        <li>Calle Principal #123, Ciudad Capital</li>
+                        <li>Teléfono: (809) 123-4567</li>
+                        <li>Email: AGN@archivodigital.gob</li>
+                        <li>Horario: Lunes a Viernes, 8:00 AM - 4:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Archivo General. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

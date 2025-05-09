@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="estilos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivo General | Patrimonio Documental Nacional</title>
+    <!-- Importamos Font Awesome para los iconos de redes sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <style>
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+   
+        
+        /* Utilidades */
+        .btn-primary {
+            display: inline-block;
+            background-color: #FF9A52; /* Naranja claro */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #FF8533; /* Naranja más oscuro para hover */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            background-color: #fff;
+            color: #FF9A52;
+            border: 2px solid #FF9A52;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #FFF1E6; /* Naranja muy claro */
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Cabecera */
+        .header-top {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 21px 0;
+            color: #fff;
+        }
+        
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-contact {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-contact span {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-media {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-media a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-media a:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Cabecera Principal */
+        .main-header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: center; /* Centrado ahora que no hay barra de búsqueda */
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 70px;
+        }
+        
+        .logo-text h1 {
+            color: #FF9A52; /* Naranja claro */
+            font-size: 24px;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Navegación Principal - Ahora horizontal centrada */
+        .main-nav {
+            background-color: #fff;
+            border-bottom: 2px solid #FFD6B8; /* Borde naranja claro */
+            padding: 5px 0;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu li a {
+            display: block;
+            color: #333;
+            padding: 12px 18px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-menu li a:hover {
+            color: #FF9A52; /* Naranja claro */
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+        }
+        
+        /* Banner Principal - Simplificado */
+        .main-banner {
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .banner-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .banner-content h2 {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #FF8533; /* Naranja más oscuro */
+        }
+        
+        .banner-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        
+        .banner-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        /* Secciones */
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section:nth-child(even) {
+            background-color: #fff;
+        }
+        
+        .section:nth-child(odd) {
+            background-color: #FFF9F5; /* Naranja muy claro */
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            color: #FF8533; /* Naranja más oscuro */
+            font-size: 32px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #FF9A52; /* Naranja claro */
+        }
+        
+        /* Accesos Rápidos - 2 columnas en lugar de 4 */
+        .quick-access-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .quick-access-item {
+            display: flex;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            align-items: center;
+        }
+        
+        .quick-access-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .quick-access-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #FFF1E6; /* Naranja muy claro */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #FF9A52; /* Naranja claro */
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .quick-access-content {
+            flex-grow: 1;
+        }
+        
+        .quick-access-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #FF8533; /* Naranja más oscuro */
+        }
+        
+        .quick-access-item p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        /* Servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            border-top: 4px solid #FF9A52; /* Borde superior naranja */
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            color: #FF8533; /* Naranja más oscuro */
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .service-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        /* Noticias - Rediseñadas como timeline */
+        .news-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .news-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 100%;
+            width: 2px;
+            background-color: #FFD6B8; /* Naranja muy claro */
+        }
+        
+        .news-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .news-item:nth-child(odd) {
+            padding-right: 50%;
+            text-align: right;
+        }
+        
+        .news-item:nth-child(even) {
+            padding-left: 50%;
+            text-align: left;
+        }
+        
+        .news-date {
+            display: inline-block;
+            background-color: #FF9A52; /* Naranja claro */
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .news-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .news-content h3 {
+            color: #FF8533; /* Naranja más oscuro */
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .news-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .news-circle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #FF9A52; /* Naranja claro */
+            border-radius: 50%;
+            top: 20px;
+        }
+        
+        .news-item:nth-child(odd) .news-circle {
+            right: -10px;
+        }
+        
+        .news-item:nth-child(even) .news-circle {
+            left: -10px;
+        }
+        
+        /* Enlaces - Rediseñados como slider horizontal */
+        .links-slider {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px 0;
+            gap: 20px;
+        }
+        
+        .link-item {
+            min-width: 180px;
+            text-align: center;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .link-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .link-item p {
+            font-size: 14px;
+            color: #FF8533; /* Naranja más oscuro */
+        }
+        
+        /* Pie de página */
+        footer {
+            background-color: #FFF1E6; /* Fondo naranja muy claro */
+            color: #333;
+            padding-top: 60px;
+            text-align: left;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+        
+        .footer-about img {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .footer-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+            color: #FF8533; /* Naranja más oscuro */
+        }
+        
+        .footer-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #FF9A52; /* Naranja claro */
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .footer-bottom {
+            background-color: #FF9A52; /* Naranja claro */
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .quick-access-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            
+            .news-timeline::before {
+                left: 20px;
+            }
+            
+            .news-item:nth-child(odd),
+            .news-item:nth-child(even) {
+                padding-left: 50px;
+                padding-right: 0;
+                text-align: left;
+            }
+            
+            .news-item:nth-child(odd) .news-circle,
+            .news-item:nth-child(even) .news-circle {
+                left: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Cabecera Superior -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-content">
+                <div class="header-contact">
+                    <span>📞 (809) 123-4567</span>
+                    <span>✉️ AGN@archivodigital.gob</span>
+                </div>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/AGNRD"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/i/flow/login?redirect_after_login=%2FAGN_RD"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/agn_rd"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/c/ArchivoGeneraldelaNaci%C3%B3nRepublicaDominicana"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cabecera Principal -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="agn.2.PNG" alt="Logo Archivo Digital">
+                    <div class="logo-text">
+                        <h1>ARCHIVO GENERAL</h1>
+                        <p>Patrimonio Documental Nacional</p>
+                    </div>
+                </div>
+                <!-- La barra de búsqueda ha sido eliminada aquí -->
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navegación Principal -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Servicios.html">Servicios</a></li>
+                <li><a href="Noticias.html">Noticias</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+                <li><a href="Presentación.html">Presentación</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    
+    <body background="fondo.png" style="background-repeat: no-repeat; background-size: cover;">
+
+    <style>
+
+        .content-container {
+            max-width: 95%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        
+        .breadcrumb {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        h1 {
+            font-size: 24px;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 10px;
+        }
+        
+        .content-divider {
+            border-bottom: 1px solid #ddd;
+            margin: 20px 0;
+        }
+        
+        .history-text {
+            line-height: 1.6;
+            color: #333;
+            text-align: justify;
+        }
+        
+        .history-text p {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div class="content-container">
+        <div class="breadcrumb">
+            Estás aquí: <a href="index.html">Inicio</a> / Términos De Uso
+        </div>
+        
+        <h1>Términos de Uso y su Aceptación
+
+        </h1>
+        
+        <div class="content-divider"></div>
+        
+        <div class="history-text">
+            <p>Los presentes términos de uso (en lo que sigue, los "Términos de Uso") regulan los servicios del portal de Internet www.agn.gob.do (en lo que sigue, el "Portal") del Archivo General de la Nación (en lo que sigue, el "AGN"), organización gubernamental y  principal institución archivística del país, donde se custodian documentos que datan de la fundación de la República y otros heredados de la época colonial, que forman una parte significativa del patrimonio documental dominicano. Adscrita al Ministerio de Cultura y creada mediante la Ley de Organización del Archivo General de la Nación, núm. 912, con su domicilio y oficinas principales en la calle Modesto Díaz No. 2, Zona Universitaria, Santo Domingo de Guzmán, Distrito Nacional, Capital de la República Dominicana.</p> 
+
+            <p>El uso del Portal le otorga la condición de usuario del Portal (en lo que sigue, el "Usuario") e implica la aceptación plena y sin reservas de todas y cada una de las disposiciones establecidas en los Términos de Uso y las Políticas publicadas por el AGN al momento en que el Usuario acceda al Portal. Por lo tanto, se hace necesario que el Usuario lea detenidamente estos términos en cada ocasión en que utilice el Portal, ya que éste puede sufrir modificaciones, sin previo aviso.            </p>
+           
+            <h4>1. Objeto.</h4>
+
+
+            <p>A través del Portal, el AGN facilita a los Usuarios el acceso y el uso de los servicios, informaciones y contenidos (en lo que sigue, los "Servicios") colocados a disposición por el AGN o por terceros.</p>
+                
+                
+                <h4>2. Condiciones de Accesibilidad y Uso del Portal.                </h4>
+                
+                <p>1. Carácter gratuito del acceso y uso del Portal.- La prestación de los Servicios, de parte del AGN, tiene carácter gratuito para el Usuario. Sin perjuicio de lo anterior, algunos de los Servicios suministrados por el AGN a través del Portal podrían estar sujetos al pago de una tasa la cual estaría establecida en el mismo.</p>
+                
+               <p>2. Registro del Usuario.- De manera general, la prestación de los Servicios no exige la suscripción o registro previo de parte del Usuario.</p>
+
+               
+                
+            <h4>3. Veracidad de la información</h4>                
+            Toda información facilitada al Usuario mediante los Servicios deberá ser veraz. Por esto, el Usuario se compromete a garantizar el carácter auténtico de los datos que provea a consecuencia de los requisitos de los formularios necesarios para la suscripción de los Servicios. De igual forma, será responsabilidad del Usuario mantener toda la información facilitada al AGN debidamente actualizada de manera tal que responda, en cada momento, a la situación real del Usuario. En todo caso el Usuario será el único responsable de las informaciones falsas o inexactas que realice y de los perjuicios que pueda causar al AGN o a terceros por la información que suministre.
+                
+<h4> 4. Propiedad Intelectual.</h4>                
+Todo el contenido de este Portal, ya sean textos, imágenes, recopilaciones, marcas, logotipos, combinaciones de colores, o cualquier otro elemento, su estructura y diseño, la selección y forma de presentación de los materiales incluidos en la misma, y los programas necesarios para su funcionamiento, acceso y uso, están protegidos por derechos de propiedad intelectual, de los cuales es titular el AGN o de terceros licenciantes, que el Usuario de este Portal debe respetar.
+
+<h4>5. El Usuario del Portal deberá abstenerse</h4><p> de suprimir, alterar, eludir o manipular cualquier dispositivo de protección o sistema de seguridad que pueda estar instalado en el mismo.</h4></p>               
+                
+
+<h4>3. El AGN puede utilizar cookies</h4>
+<p> cuando un Usuario navega por los sitios y páginas Web del Portal. Las cookies que se puedan usar en los sitios y páginas Web del Portal se asocian únicamente con el navegador de un computador determinado (un Usuario anónimo), y no proporcionan en sí mismas el nombre y apellido del Usuario. Gracias a las "cookies", resulta posible que el AGN reconozca los navegadores de los Usuarios registrados (luego de que éstos se hayan registrado por primera vez), esto ayuda que no tengan que registrarse cada vez que visita las áreas y los Servicios reservados exclusivamente a ellos. Las "cookies" utilizadas no pueden leer archivos "cookie" creados por otros proveedores. El Usuario tiene la posibilidad de configurar su navegador para ser avisado en su pantalla de la recepción de "cookies" y para impedir la instalación de las mismas en el disco duro.</p>
+
+
+<h4>Términos de Uso - Mobile</h4>
+<p>Los presentes términos de uso (en lo que sigue, los "Términos de Uso") regulan los servicios del portal de Internet www.agn.gob.do (en lo que sigue, el "Portal") del Archivo General de la Nación (en lo que sigue, el "AGN"), organización gubernamental y  principal institución archivística del país, donde se custodian documentos que datan de la fundación de la República y otros heredados de la época colonial, que forman una parte significativa del patrimonio documental dominicano. Adscrita al Ministerio de Cultura y creada mediante la Ley de Organización del Archivo General de la Nación, núm. 912, con su domicilio y oficinas principales en la calle Modesto Díaz No. 2, Zona Universitaria, Santo Domingo de Guzmán, Distrito Nacional, Capital de la República Dominicana.</p>
+<p>El uso del Portal le otorga la condición de usuario del Portal (en lo que sigue, el "Usuario") e implica la aceptación plena y sin reservas de todas y cada una de las disposiciones establecidas en los Términos de Uso y las Políticas publicadas por el AGN al momento en que el Usuario acceda al Portal. Por lo tanto, se hace necesario que el Usuario lea detenidamente estos términos en cada ocasión en que utilice el Portal, ya que éste puede sufrir modificaciones, sin previo aviso.</p>
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <!-- Pie de página -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <img src="agn.2.PNG" alt="Logo Archivo Digital">
+                    <p>El Archivo General es la institución responsable de la custodia, organización, preservación y difusión del patrimonio documental nacional, garantizando su acceso y contribuyendo a la salvaguarda de la memoria histórica del país.</p>
+                    <p>Horario de atención: Lunes a Viernes de 8:00 a.m. a 4:00 p.m.</p>
+                    <div class="footer-links">
+                        <a href="Términos De Uso.html">Términos De Uso</a>
+                        <span class="separator">|</span>
+                        <a href="Políticas De Privacidad.html">Políticas De Privacidad</a>
+                      
+                    </div>
+                </div>
+                <div class="footer-links-section">
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li>
+                <li><a href="Servicios.html">Servicios</a></li>
+                <li><a href="Noticias.html">Noticias</a></li>
+                <li><a href="Contacto.html">Contacto</a></li>
+                <li><a href="Presentación.html">Presentación</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-contact-section">
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-contact">
+                        <li>Calle Principal #123, Ciudad Capital</li>
+                        <li>Teléfono: (809) 123-4567</li>
+                        <li>Email: AGN@archivodigital.gob</li>
+                        <li>Horario: Lunes a Viernes, 8:00 AM - 4:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Archivo General. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
